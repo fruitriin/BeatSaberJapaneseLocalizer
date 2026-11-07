@@ -14,6 +14,7 @@ D["BetterSongSearch"] = {
     "Sort": "順序",
     "Upload Details": "投稿情報",
     "Uploader(s)": "投稿者",
+    "Min upload date": "最も古い投稿日",
     # 上の言い換えに呼び名をそろえる
     "BetterSongSearch - Upload Details": "BetterSongSearch - 投稿情報",
     "You can enter multiple Uploader names, seperated by spaces. If you have an Exclamation mark at the beginning of your input it becomes a blacklist for the given uploaders":

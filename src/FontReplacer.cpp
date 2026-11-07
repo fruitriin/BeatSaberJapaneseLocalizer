@@ -126,6 +126,27 @@ namespace JapaneseLocalizer {
             return true;
         }
 
+        std::string Describe(UnityEngine::TextCore::FaceInfo fi) {
+            return fmt::format("pointSize {} scale {:.3f} lineHeight {:.2f} ascent {:.2f} descent {:.2f}", fi.get_pointSize(), fi.get_scale(),
+                               fi.get_lineHeight(), fi.get_ascentLine(), fi.get_descentLine());
+        }
+
+        // 本体の日本語フォント（NotoSansJP-Medium SDF）と字の大きさをそろえる。
+        // TMP は「フォントの大きさ / pointSize × scale」で字を拡大するので、1行の高さがそろうよう scale を合わせる
+        void MatchScale(TMPro::TMP_FontAsset* font, TMPro::TMP_FontAsset* reference) {
+            if (!font || !reference) return;
+            auto ref = reference->get_faceInfo();
+            auto own = font->get_faceInfo();
+            INFO("reference {}: {}", FontName(reference), Describe(ref));
+            INFO("custom font before: {}", Describe(own));
+            float refHeight = ref.get_lineHeight() / (float) ref.get_pointSize() * ref.get_scale();
+            float ownHeight = own.get_lineHeight() / (float) own.get_pointSize() * own.get_scale();
+            if (refHeight <= 0 || ownHeight <= 0) return;
+            own.set_scale(own.get_scale() * refHeight / ownHeight);
+            font->set_faceInfo(own);
+            INFO("custom font after: {}", Describe(own));
+        }
+
         void RefreshTexts() {
             auto texts = UnityEngine::Object::FindObjectsOfType(csTypeOf(TMPro::TMP_Text*), false);
             for (auto obj : texts) {
@@ -149,6 +170,13 @@ namespace JapaneseLocalizer {
                             }
                         }
                         if (!CreateCustomFont(templateMaterial)) failed = true;
+                        for (auto obj : fonts) {
+                            auto f = reinterpret_cast<TMPro::TMP_FontAsset*>(obj.ptr());
+                            if (f && FontName(f).starts_with("NotoSansJP")) {
+                                MatchScale(customFont.ptr(), f);
+                                break;
+                            }
+                        }
                     }
                     bool changed = false;
                     if (customFont) {
