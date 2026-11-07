@@ -11,6 +11,8 @@ for src in sorted((root / "tools").glob("dicts_*.py")):
     spec.loader.exec_module(mod)
     for name, entries in mod.D.items():
         merged.setdefault(name, {}).update(entries)
+        for k in [k for k, v in entries.items() if not v]:
+            merged[name].pop(k, None)
 for name, entries in merged.items():
     path = out / f"{name}.json"
     path.write_text(json.dumps(dict(sorted(entries.items())), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

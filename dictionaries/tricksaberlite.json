@@ -1,4 +1,6 @@
 {
+  "--- Left Saber Controls ---": "--- 左セイバーの操作 ---",
+  "--- Right Saber Controls ---": "--- 右セイバーの操作 ---",
   "Enable TriickSaber": "TrickSaber を有効にする",
   "Enable TriickSaber Mod": "TrickSaber を有効にします",
   "If true, spins clockwise, else counter-clockwise.": "オンで時計回り、オフで反時計回りに回します",

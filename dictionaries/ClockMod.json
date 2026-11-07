@@ -1,4 +1,5 @@
 {
+  "24/12 Toggle": "12 / 24 時間表示",
   "Change ClockColor": "時計の色を変える",
   "Changes the Font Size of the Clock (Default: 3.5)": "時計の文字の大きさを変えます（既定: 3.5）",
   "Clock Color": "時計の色",
@@ -18,6 +19,10 @@
   "Open the ClockMod Settings": "ClockMod の設定を開きます",
   "Rainbowify it": "虹色にする",
   "Session Time": "プレイ時間",
+  "Show Battery Percentage": "電池の残量を表示",
+  "Show During Replay": "リプレイ中も表示",
+  "Show During Song": "プレイ中も表示",
+  "Show Seconds": "秒を表示",
   "Stopwatch 1": "ストップウォッチ 1",
   "Stopwatch 1 Paused": "ストップウォッチ 1 を一時停止",
   "Stopwatch 1 Seconds": "ストップウォッチ 1 の秒数",
@@ -27,5 +32,6 @@
   "The color of the clock text.": "時計の文字の色",
   "The saved time on stopwatch 1.": "ストップウォッチ 1 に保存した時間",
   "The saved time on stopwatch 2.": "ストップウォッチ 2 に保存した時間",
-  "Which time the Clock should display.": "時計に表示する時刻"
+  "Which time the Clock should display.": "時計に表示する時刻",
+  "Your Timezone -  {0}\nUTC offset -  {1}": "タイムゾーン -  {0}\nUTC との時差 -  {1}"
 }

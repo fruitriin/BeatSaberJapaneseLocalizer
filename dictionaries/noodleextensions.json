@@ -1,6 +1,6 @@
 {
   "Basic: retains opaque material color once dissolve is applied": "Basic: 溶かしたあとも不透明な色を保ちます",
-  "Disable Qosmetics models on NE maps": "NE 譜面では Qosmetics のモデルを使わない",
+  "Disable Qosmetics models on NE maps": "NE 譜面で Qosmetics を使わない",
   "Enable mirror note dissolve": "映り込んだノーツも溶かす",
   "Enable note dissolve": "ノーツを溶かす演出を有効にする",
   "Enable obstacle dissolve": "壁を溶かす演出を有効にする",
@@ -8,5 +8,6 @@
   "If enabled, allows note mirrors to dissolve. When disabled, hides the notes if dissolved": "オンにすると、映り込んだノーツも溶けます。オフにすると、溶けたノーツの映り込みを隠します",
   "Noodle Extensions": "Noodle Extensions",
   "Obstacle material behaviour": "壁のマテリアルの扱い",
-  "Qosmetics models cause an outstanding amount of lag in the current state. Disable this setting if you do not care and will happily jam to UwU notes and rainbow walls": "Qosmetics のモデルは、いまのところ大きな遅延の原因になります。気にしない場合はこの設定をオフにしてください"
+  "Qosmetics models cause an outstanding amount of lag in the current state. Disable this setting if you do not care and will happily jam to UwU notes and rainbow walls": "Qosmetics のモデルは、いまのところ大きな遅延の原因になります。気にしない場合はこの設定をオフにしてください",
+  "Smart: Changes obstacle material based on Chroma coloring to simulate distortion opacity.\nSemiBasic: switches material opaque/transparent if dissolve is applied.\nBasic: retains opaque material color once dissolve is applied": "Smart: Chroma の色に合わせて壁のマテリアルを変え、ゆがみの透け具合を再現します。\nSemiBasic: 溶かすと、不透明と透明のマテリアルを切り替えます。\nBasic: 溶かしたあとも不透明な色を保ちます"
 }

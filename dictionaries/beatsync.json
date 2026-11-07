@@ -4,7 +4,8 @@
   "IP Address": "IP アドレス",
   "Opens BeatSync Settings": "BeatSync の設定を開きます",
   "Playlist Path": "プレイリストのパス",
-  "Pull Beatmaps": "譜面を取り込む",
+  "Port": "ポート",
+  "Pull Beatmaps": "譜面取込",
   "Pull Progress": "取り込みの進み具合",
   "Pulling...": "取り込み中...",
   "Remapper Output": "Remapper の出力"

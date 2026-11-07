@@ -1,4 +1,5 @@
 {
+  "Age": "年齢",
   "Auto scaning": "自動で検索中",
   "Bluetooth Device": "Bluetooth デバイス",
   "Bluetooth permission missing for game": "ゲームに Bluetooth の権限がありません",
@@ -36,10 +37,14 @@
   "Scan stopped": "検索を止めました",
   "Select UI": "UI を選ぶ",
   "Selected BLE Device Mac": "選んだ BLE デバイスの MAC アドレス",
-  "Start Scan": "検索を開始",
+  "Start Scan": "検索開始",
   "Start safe pair": "安全にペアリングを開始",
-  "Stop Scan": "検索を止める",
+  "Stop Scan": "検索停止",
   "Text Color": "文字の色",
   "Thank you Player! But data-source config is in another menu!": "ありがとう！ データの取得元の設定は、別のメニューにあります",
-  "The mod is not enabled": "Mod が有効になっていません"
+  "The mod is not enabled": "Mod が有効になっていません",
+  "Waiting...": "待機中...",
+  "data source(need restart)": "データの取得元（再起動が必要）",
+  "enabled(need restart)": "有効（再起動が必要）",
+  "hiding mac address, click to show.": "MAC アドレスを隠しています。押すと表示します。"
 }
