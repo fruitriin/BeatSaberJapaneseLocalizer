@@ -180,3 +180,8 @@ D["bsl"] = {
     "Random without repeats": "重複なしでランダム",
     "The random button picks every song in the current list once before any song comes up again": "ランダムのボタンで、いまの一覧の曲をひと通り選び終えるまで、同じ曲を選びません",
 }
+
+D["ModifiersCoreQuest"].update({
+    "Increases song speed by 20%, note speed by 10%": "曲の速さを 20%、ノーツの速さを 10% 上げます",
+    "Increases song speed by 50%, note speed by 25%": "曲の速さを 50%、ノーツの速さを 25% 上げます",
+})

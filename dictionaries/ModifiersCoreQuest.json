@@ -3,6 +3,8 @@
   "Better Super Fast Song": "スーパー高速曲（改）",
   "Dance Mode": "ダンスモード",
   "Golf": "ゴルフ",
+  "Increases song speed by 20%, note speed by 10%": "曲の速さを 20%、ノーツの速さを 10% 上げます",
+  "Increases song speed by 50%, note speed by 25%": "曲の速さを 50%、ノーツの速さを 25% 上げます",
   "Score goes only to the Golf leaderboard, where lower accuracy is better. Needs accuracy of at most 50%": "スコアは Golf のリーダーボードにだけ送られ、精度が低いほど上位になります。精度 50% 以下が必要です",
   "Score is how much you dance. Energy also drains when you stop dancing for a while": "どれだけ踊ったかがスコアになります。しばらく踊らないと、エネルギーも減ります"
 }
