@@ -1,5 +1,8 @@
 # include some defines automatically made by qpm
 include(qpm_defines.cmake)
+# qpm は MOD_ID を表示名（qpm.json の name）から作る。表示名は日本語なので、mod.json の id と同じ値に固定する。
+# 設定ファイル（Configs/<MOD_ID>.json）とログのタグにも使われるので、変えると利用者の設定が初期値に戻る
+set(MOD_ID "JapaneseLocalizer")
 
 cmake_minimum_required(VERSION 3.22)
 project(${COMPILE_ID})
