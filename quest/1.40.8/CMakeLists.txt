@@ -14,6 +14,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # define that stores the actual source directory
 set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
+# ゲームの版に依存しないコード（辞書の読み込みと照合）
+set(COMMON_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../common)
 
 # compile options used
 add_link_options(-Wl,--exclude-libs,ALL)
@@ -41,6 +43,7 @@ add_compile_definitions(MOD_ID=\"${MOD_ID}\")
 # recursively get all src files
 RECURSE_FILES(cpp_file_list ${SOURCE_DIR}/*.cpp)
 RECURSE_FILES(c_file_list ${SOURCE_DIR}/*.c)
+RECURSE_FILES(common_cpp_file_list ${COMMON_DIR}/src/*.cpp)
 
 RECURSE_FILES(src_inline_hook_beatsaber_hook_local_extra_c ${EXTERN_DIR}/includes/beatsaber-hook/shared/inline-hook/*.c)
 RECURSE_FILES(src_inline_hook_beatsaber_hook_local_extra_cpp ${EXTERN_DIR}/includes/beatsaber-hook/shared/inline-hook/*.cpp)
@@ -50,6 +53,7 @@ add_library(
     ${COMPILE_ID}
     SHARED
     ${cpp_file_list}
+    ${common_cpp_file_list}
     ${c_file_list}
     ${src_inline_hook_beatsaber_hook_local_extra_c}
     ${src_inline_hook_beatsaber_hook_local_extra_cpp}
@@ -59,6 +63,9 @@ add_library(
 target_include_directories(${COMPILE_ID} PRIVATE ${SOURCE_DIR})
 # add include dir as include dir
 target_include_directories(${COMPILE_ID} PRIVATE ${INCLUDE_DIR})
+target_include_directories(${COMPILE_ID} PRIVATE ${COMMON_DIR}/include)
+# quest/common は rapidjson を "rapidjson/document.h" で読む
+target_include_directories(${COMPILE_ID} PRIVATE ${EXTERN_DIR}/includes/beatsaber-hook/shared/rapidjson/include)
 # add shared dir as include dir
 target_include_directories(${COMPILE_ID} PUBLIC ${SHARED_DIR})
 # codegen includes

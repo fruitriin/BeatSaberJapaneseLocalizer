@@ -1,18 +1,18 @@
 # 2026-11-07 に MBF で追加された Mod と、BeatSaberPlus 6.4.5 で増えた文字列の辞書
 D = {}
 
-D["chatplex-sdk-bs"] = {
+D["ChatPlexSDK"] = {
     "Unknown server error!": "サーバーで不明なエラーが発生しました",
     "Internal ChatPlex service error": "ChatPlex のサービスで内部エラーが発生しました",
     "Event specials (Require game restart)": "イベントの特別演出（ゲームの再起動が必要）",
 }
 
-D["qbeatsaberplus-menumusic"] = {
+D["BeatSaberPlus-MenuMusic"] = {
     "Add to queue": "キューに追加",
 }
 
 # ---- BeatLeader（libbl.so）: 設定画面など BSML-Lite と .bsml で作る部分 ----
-D["bl"] = {
+D["BeatLeader"] = {
     "Details": "詳細",
     "Back": "戻る",
     "Dance or Die!": "Dance or Die!",
@@ -75,7 +75,7 @@ D["bl"] = {
     "Currently selected leaderboard - ": "選んでいるリーダーボード - ",
 }
 
-D["beatsync"] = {
+D["BeatSync"] = {
     "BeatSync Settings": "BeatSync の設定",
     "Opens BeatSync Settings": "BeatSync の設定を開きます",
     "Pull Beatmaps": "譜面を取り込む",
@@ -147,7 +147,7 @@ D["IntroSkip"] = {
     "Require both triggers be pressed in order to skip. WHen disabled either trigger will skip": "両手のトリガーを押したときだけ飛ばします。オフにすると、片方のトリガーで飛ばします",
 }
 
-D["transitions"] = {
+D["Transitions"] = {
     "Transitions": "Transitions",
     "Override Scene Transitions": "画面切り替えの長さを上書き",
     "Forces all scene transitions to be a specific duration": "すべての画面切り替えを、指定した長さにします",
@@ -155,7 +155,7 @@ D["transitions"] = {
     "The duration to force for all transitions": "すべての画面切り替えに使う長さ",
 }
 
-D["noodleextensions"] = {
+D["NoodleExtensions"] = {
     "Noodle Extensions": "Noodle Extensions",
     "Enable note dissolve": "ノーツを溶かす演出を有効にする",
     "Enable obstacle dissolve": "壁を溶かす演出を有効にする",
@@ -169,7 +169,7 @@ D["noodleextensions"] = {
         "Qosmetics のモデルは、いまのところ大きな遅延の原因になります。気にしない場合はこの設定をオフにしてください",
 }
 
-D["playlistmanager"] = {
+D["PlaylistManager"] = {
     "Playlist Manager": "Playlist Manager",
     "Open the PlaylistManager menu": "PlaylistManager のメニューを開きます",
     "Manage Playlists": "プレイリストの管理",
@@ -235,7 +235,7 @@ D["HeartBeatQuest"] = {
     "Need Accuracy Location Perm": "正確な位置情報の権限が必要です",
 }
 
-D["EasyOffsetQuest"] = {
+D["EasyOffset"] = {
     "Easy Offset": "Easy Offset",
     "Controller type": "コントローラーの種類",
     "Adjustment mode": "調整のモード",
@@ -268,7 +268,7 @@ D["EasyOffsetQuest"] = {
     "Active profile invalid; load a valid preset": "使用中のプロファイルが正しくありません。有効なプリセットを読み込んでください",
 }
 
-D["tricksaberlite"] = {
+D["TrickSaberLite"] = {
     "TrickSaber Lite Settings": "TrickSaber Lite の設定",
     "Enable TriickSaber": "TrickSaber を有効にする",
     "Enable TriickSaber Mod": "TrickSaber を有効にします",
@@ -307,17 +307,17 @@ D["tricksaberlite"] = {
     "Right Grip": "右グリップ",
 }
 
-D["imagecoverexpander"] = {
+D["ImageCoverExpander"] = {
     "Enable the Mod": "Mod を有効にする",
     "Brightness of the cover": "ジャケットの明るさ",
     "Opacity of the cover": "ジャケットの不透明度",
 }
 
-D["anytext"] = {
+D["AnyText"] = {
     "Change any text in the game": "ゲーム内の好きな文字を置き換えます",
 }
 
-D["airbuds-search"] = {
+D["AirbudsSearch"] = {
     "Continue": "続ける",
     "Downloads": "ダウンロード",
     "My friends": "フレンド",
@@ -349,7 +349,7 @@ D["airbuds-search"] = {
     "Clear Cache": "キャッシュを消去",
 }
 
-D["spotify-search"] = {
+D["SpotifySearch"] = {
     "Continue": "続ける",
     "Downloads": "ダウンロード",
     "Retry": "再試行",
@@ -383,7 +383,7 @@ D["spotify-search"] = {
 }
 
 # ---- このリポジトリで作っている Mod ----
-D["songplayhistory"] = {
+D["SongPlayHistory"] = {
     "Song Play History": "プレイ履歴",
     "Song Play History Settings": "プレイ履歴の設定",
     "Display failed records": "失敗した記録も表示",
@@ -395,7 +395,7 @@ D["songplayhistory"] = {
     "Highscore": "ハイスコア",
 }
 
-D["redbar"] = {
+D["RedBar"] = {
     "Alpha": "不透明度",
     "Alwayshave an Rainbow bar": "常に虹色のバーにする",
     "Fadeout": "フェードアウト",

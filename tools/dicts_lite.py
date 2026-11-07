@@ -1,7 +1,7 @@
 # BSML-Lite と ChatPlex SDK で画面を作る Mod の辞書
 D = {}
 
-D["songdownloader"] = {
+D["SongDownloader"] = {
     "Download Songs": "曲をダウンロード",
     "Download To Playlist": "プレイリストにダウンロード",
     "More Songs": "曲をさらに表示",
@@ -42,7 +42,7 @@ D["songdownloader"] = {
     "List": "一覧",
 }
 
-D["playlistcore"] = {
+D["PlaylistCore"] = {
     "Reload New Playlists": "新しいプレイリストを読み込む",
     "Reloads new playlists from the playlist folder": "プレイリストのフォルダーから、新しいプレイリストを読み込みます",
     "Reload All Playlists": "すべてのプレイリストを読み直す",
@@ -79,7 +79,7 @@ D["BetterHaptics"] = {
     "BetterHaptics by Crunkle": "BetterHaptics（作者: Crunkle）",
 }
 
-D["jdfixer"] = {
+D["JDFixer"] = {
     "Disable Mod": "Mod を無効にする",
     "Whether to disable the mod entirely, allowing the base game settings to take effect": "Mod 全体を無効にし、本体の設定を使います",
     "Main Settings": "基本設定",
@@ -131,7 +131,7 @@ D["jdfixer"] = {
 }
 
 # ---- BeatSaberPlus（ChatPlex SDK） ----
-D["chatplex-sdk-bs"] = {
+D["ChatPlexSDK"] = {
     "Modules": "モジュール",
     "Other settings": "その他の設定",
     "No available other settings at the moment!": "いまはほかの設定はありません",
@@ -170,7 +170,7 @@ D["chatplex-sdk-bs"] = {
     "<b>Welcome to QBeatSaberPlus {0}</b>\nMade by HardCPP!": "<b>QBeatSaberPlus {0} へようこそ</b>\n作者: HardCPP",
 }
 
-D["qbeatsaberplus-gametweaker"] = {
+D["BeatSaberPlus-GameTweaker"] = {
     "Game Tweaker | Settings": "Game Tweaker | 設定",
     "Customize your game play & menu experience!": "ゲームプレイとメニューを好みに合わせて調整します",
     "<i><color=#CCCCCCFF>This module allow you to customize your game experience, remove some boring base game features, and add new cool features/tweaks</color></i>":
@@ -208,7 +208,7 @@ D["qbeatsaberplus-gametweaker"] = {
         "<line-height=125%><b>Game Tweaker</b>\n<i><color=#CCCCCCFF>ゲームの体験を好みに合わせて調整するモジュールです。本体の邪魔な演出を消したり、新しい機能や調整を加えたりできます</color></i>",
 }
 
-D["qbeatsaberplus-menumusic"] = {
+D["BeatSaberPlus-MenuMusic"] = {
     "Menu Music | Settings": "Menu Music | 設定",
     "Replace boring ambient noise by music!": "メニューの環境音を音楽に置き換えます",
     "Show player interface": "プレイヤーを表示",
@@ -228,7 +228,7 @@ D["qbeatsaberplus-menumusic"] = {
     "all Menu Music settings?": "Menu Music の設定をすべてリセットしますか？",
 }
 
-D["qbeatsaberplus-notetweaker"] = {
+D["BeatSaberPlus-NoteTweaker"] = {
     "Note Tweaker | Settings": "Note Tweaker | 設定",
     "<i><color=#CCCCCCFF>This module allows you to customize the default notes</color></i>": "<i><color=#CCCCCCFF>標準のノーツを好みに合わせて調整するモジュールです</color></i>",
     "Profiles": "プロファイル",
@@ -270,7 +270,7 @@ D["qbeatsaberplus-notetweaker"] = {
     "<b>Note Tweaker</b>\n<i><color=#CCCCCCFF>This module allows you to customize the default notes</color></i>": "<b>Note Tweaker</b>\n<i><color=#CCCCCCFF>標準のノーツを好みに合わせて調整するモジュールです</color></i>",
 }
 
-D["qbeatsaberplus-multiplayer"] = {
+D["BeatSaberPlus-Multiplayer"] = {
     "Multiplayer | Settings": "Multiplayer | 設定",
     "Public rooms": "公開ルーム",
     "Find Room": "ルームを探す",

@@ -70,8 +70,12 @@ foreach ($lib in $modJson.libraryFiles) {
     $filelist += $path
 }
 
+# 辞書と mods.json は、ゲームの版に依存しないのでリポジトリの直下にある
 foreach ($copy in $modJson.fileCopies) {
-    $path = "./dictionaries/" + $copy.name
+    $path = "../../dictionaries/" + $copy.name
+    if (-not (Test-Path $path)) {
+        $path = "../../" + $copy.name
+    }
     if (-not (Test-Path $path)) {
         Write-Output "Error: could not find file copy: $path"
         exit 1

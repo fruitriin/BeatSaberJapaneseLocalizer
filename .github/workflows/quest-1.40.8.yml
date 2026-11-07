@@ -1,0 +1,70 @@
+# Quest 版 Beat Saber 1.40.8 向けの qmod をビルドする。
+# タグ（v*）を push すると、qmod をリリースに添付する。
+name: Quest 1.40.8
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    tags: ["v*"]
+    paths-ignore: ["docs/**", "**.md"]
+  pull_request:
+    paths-ignore: ["docs/**", "**.md"]
+
+permissions:
+  contents: write
+
+env:
+  package_path: quest/1.40.8
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: seanmiddleditch/gha-setup-ninja@v5
+
+      - name: Restore qpm dependencies and NDK
+        uses: Fernthedev/qpm-action@v1
+        with:
+          workflow_token: ${{ secrets.GITHUB_TOKEN }}
+          package_path: ${{ env.package_path }}
+          restore: true
+          resolve_ndk: true
+          cache: true
+          publish: false
+
+      - name: Check dictionaries
+        run: |
+          python3 tools/build_dicts.py
+          git diff --exit-code -- dictionaries quest/1.40.8/mod.template.json
+
+      - name: Translation tests
+        run: tests/run.sh
+
+      - name: Build
+        working-directory: ${{ env.package_path }}
+        run: qpm s build -- -release
+
+      - name: Create qmod
+        working-directory: ${{ env.package_path }}
+        run: |
+          rm -f mod.json
+          qpm qmod manifest
+          qpm s qmod
+          version=$(jq -r .version mod.json)
+          mv "Japanese Localizer.qmod" "JapaneseLocalizer-${version}-quest-1.40.8.qmod"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: JapaneseLocalizer-quest-1.40.8
+          path: |
+            ${{ env.package_path }}/JapaneseLocalizer-*.qmod
+            ${{ env.package_path }}/build/debug/libJapaneseLocalizer.so
+
+      - name: Attach qmod to the release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.package_path }}/JapaneseLocalizer-*.qmod

@@ -77,7 +77,7 @@ D["_common"] = {
     "Please wait": "お待ちください",
 }
 
-D["bsml"] = {
+D["BSML"] = {
     "ERROR PARSING BSML FILE": "BSML ファイルの読み込みに失敗しました",
     "Vanilla": "標準",
     "Mods": "Mod",
@@ -92,7 +92,7 @@ D["bsml"] = {
     "mods were found, showing buttons!": "Mod が見つかりました",
 }
 
-D["bsl"] = {
+D["BetterSongList"] = {
     "Sort": "並べ替え",
     "Filter": "フィルター",
     "Sort direction (Ascending / Descending)": "並べ替えの向き（昇順 / 降順）",
@@ -196,7 +196,7 @@ D["BetterSongSearch"] = {
     "Close Details": "詳細を閉じる",
 }
 
-D["songcore"] = {
+D["SongCore"] = {
     "Allow Custom Song Note Colors": "カスタム曲のノーツの色を使う",
     "Allow Custom Songs to override note colors": "カスタム曲がノーツの色を変えられるようにします",
     "Allow Custom Song Obstacle Colors": "カスタム曲の壁の色を使う",

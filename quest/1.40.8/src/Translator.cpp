@@ -1,6 +1,7 @@
 #include "Translator.hpp"
 #include "Config.hpp"
 #include "logging.hpp"
+#include "JapaneseLocalizer/Dictionaries.hpp"
 
 #include "beatsaber-hook/shared/rapidjson/include/rapidjson/document.h"
 #include "beatsaber-hook/shared/rapidjson/include/rapidjson/prettywriter.h"
@@ -14,7 +15,6 @@
 #include <fstream>
 #include <map>
 #include <mutex>
-#include <regex>
 #include <set>
 #include <shared_mutex>
 #include <sstream>
@@ -23,75 +23,22 @@
 
 namespace JapaneseLocalizer {
     namespace {
-        // {0} などを含む見出し語を正規表現にしたもの
-        struct Template {
-            std::regex pattern;
-            std::vector<int> slots;      // 見出し語の中の {n} の並び（キャプチャの順）
-            std::string translation;     // {n} を含む訳
-        };
-
-        struct Dictionary {
-            std::unordered_map<std::string, std::string> exact;
-            std::vector<Template> templates;
-        };
-
         std::shared_mutex dictMutex;
-        std::unordered_map<std::string, Dictionary> dictionaries;   // キーはファイル名（拡張子なし）
-        Dictionary merged;                                            // 全辞書をまとめたもの（Mod 名が決まらないとき用）
+        Core::Dictionaries dictionaries;   // 辞書の照合（quest/common）。mods.json の対応表もここに持つ
 
         std::mutex sourceMutex;
-        std::unordered_map<std::string, TranslationSource> sources;   // 訳文 → 原文と Mod 名
+        std::unordered_map<std::string, TranslationSource> sources;   // 訳文 → 原文と Mod の ID
 
         std::mutex collectMutex;
-        std::map<std::string, std::set<std::string>> untranslated;   // Mod 名 → 未翻訳の文字列
+        std::map<std::string, std::set<std::string>> untranslated;   // Mod の ID → 未翻訳の文字列
         bool untranslatedLoaded = false;
 
-        constexpr std::string_view CommonDictName = "_common";
-
-        std::string EscapeRegex(std::string_view s) {
-            static constexpr std::string_view special = R"(\^$.|?*+()[]{})";
-            std::string out;
-            out.reserve(s.size() * 2);
-            for (char c : s) {
-                if (special.find(c) != std::string_view::npos) out.push_back('\\');
-                out.push_back(c);
-            }
-            return out;
-        }
-
-        // "{0} songs" → regex "^(.*?) songs$"、slots = {0}
-        std::optional<Template> MakeTemplate(std::string const& key, std::string const& value) {
-            static std::regex const placeholder(R"(\{(\d+)\})");
-            Template t;
-            std::string pattern;
-            std::size_t last = 0;
-            for (auto it = std::sregex_iterator(key.begin(), key.end(), placeholder); it != std::sregex_iterator(); ++it) {
-                auto const& m = *it;
-                pattern += EscapeRegex(std::string_view(key).substr(last, m.position() - last));
-                pattern += "([\\s\\S]*?)";
-                t.slots.push_back(std::stoi(m[1].str()));
-                last = m.position() + m.length();
-            }
-            if (t.slots.empty()) return std::nullopt;
-            pattern += EscapeRegex(std::string_view(key).substr(last));
-            try {
-                t.pattern = std::regex(pattern, std::regex::ECMAScript | std::regex::optimize);
-            } catch (std::exception const& e) {
-                ERROR("bad template '{}': {}", key, e.what());
-                return std::nullopt;
-            }
-            t.translation = value;
-            return t;
-        }
-
-        void AddEntry(Dictionary& dict, std::string const& key, std::string const& value) {
-            if (key.find('{') != std::string::npos) {
-                if (auto t = MakeTemplate(key, value)) {
-                    dict.templates.push_back(std::move(*t));
-                    return;
-                }
-            }
-            dict.exact.emplace(key, value);
+        // 辞書ではないファイル（書き出したログと対応表）
+        bool IsDictionaryFile(std::string const& name) {
+            if (!name.ends_with(".json")) return false;
+            if (name == "mods.json") return false;
+            if (name.starts_with("untranslated") || name.starts_with("overflow")) return false;
+            return true;
         }
 
         std::optional<std::string> ReadFile(std::string const& path) {
@@ -100,22 +47,6 @@ namespace JapaneseLocalizer {
             std::stringstream ss;
             ss << f.rdbuf();
             return ss.str();
-        }
-
-        std::optional<std::string> LookupIn(Dictionary const& dict, std::string const& text) {
-            if (auto it = dict.exact.find(text); it != dict.exact.end()) return it->second;
-            for (auto const& t : dict.templates) {
-                std::smatch m;
-                if (!std::regex_match(text, m, t.pattern)) continue;
-                std::string out = t.translation;
-                for (std::size_t i = 0; i < t.slots.size(); i++) {
-                    std::string ph = "{" + std::to_string(t.slots[i]) + "}";
-                    std::size_t pos;
-                    while ((pos = out.find(ph)) != std::string::npos) out.replace(pos, ph.size(), m[i + 1].str());
-                }
-                return out;
-            }
-            return std::nullopt;
         }
 
         // 収集に値しない文字列（数値だけ、日本語を含む、など）
@@ -230,48 +161,46 @@ namespace JapaneseLocalizer {
         mkdir("/sdcard/ModData/com.beatgames.beatsaber/Mods/", 0777);
         mkdir(DictionaryDir().c_str(), 0777);
 
-        std::unordered_map<std::string, Dictionary> loaded;
-        Dictionary all;
-        std::size_t total = 0;
+        Core::Dictionaries loaded;
+        // 正式な Mod の ID と、各プラットフォームでの別名の対応表。無ければ .so 名をそのまま辞書名として使う
+        if (auto table = ReadFile(DictionaryDir() + "mods.json")) {
+            std::string error;
+            if (!loaded.LoadModTable(*table, &error)) ERROR("mods.json: {}", error);
+        } else {
+            WARNING("mods.json not found; dictionaries are looked up by .so name");
+        }
 
+        std::vector<std::string> files;
         if (auto* dir = opendir(DictionaryDir().c_str())) {
-            std::vector<std::string> files;
             while (auto* ent = readdir(dir)) {
                 std::string name = ent->d_name;
-                if (!name.ends_with(".json") || name == "untranslated.json") continue;
-                files.push_back(name);
+                if (IsDictionaryFile(name)) files.push_back(name);
             }
             closedir(dir);
-            std::sort(files.begin(), files.end());
+        }
+        // 以前（.so 名のファイル名だったとき）と同じ順に読む。全辞書をまとめた辞書では先に読んだ訳が勝つため
+        auto orderKey = [&](std::string const& name) { return loaded.LoadOrderKey(name.substr(0, name.size() - 5)) + ".json"; };
+        std::sort(files.begin(), files.end(), [&](auto const& a, auto const& b) { return orderKey(a) < orderKey(b); });
 
-            for (auto const& name : files) {
-                auto content = ReadFile(DictionaryDir() + name);
-                if (!content) continue;
-                rapidjson::Document doc;
-                doc.Parse(content->c_str());
-                if (doc.HasParseError() || !doc.IsObject()) {
-                    ERROR("dictionary {} is not a JSON object (parse error {} at {})", name, (int) doc.GetParseError(), doc.GetErrorOffset());
-                    continue;
-                }
-                auto module = name.substr(0, name.size() - 5);
-                auto& dict = loaded[module];
-                for (auto& m : doc.GetObject()) {
-                    if (!m.name.IsString() || !m.value.IsString()) continue;
-                    std::string key = m.name.GetString();
-                    std::string value = m.value.GetString();
-                    if (key.empty() || value.empty() || key.starts_with("//")) continue;
-                    AddEntry(dict, key, value);
-                    AddEntry(all, key, value);
-                    total++;
-                }
-                INFO("loaded dictionary {}: {} exact, {} templates", module, dict.exact.size(), dict.templates.size());
+        for (auto const& name : files) {
+            auto stem = name.substr(0, name.size() - 5);
+            auto id = loaded.DictionaryIdForFile(stem);
+            if (!id) {
+                INFO("skip dictionary {}: old file name of {}", name, loaded.ResolveModule(stem));
+                continue;
             }
+            auto content = ReadFile(DictionaryDir() + name);
+            if (!content) continue;
+            std::string error;
+            if (auto count = loaded.AddDictionary(*id, *content, &error))
+                INFO("loaded dictionary {} ({}): {} entries", *id, name, *count);
+            else
+                ERROR("dictionary {}: {}", name, error);
         }
 
         std::unique_lock lock(dictMutex);
         dictionaries = std::move(loaded);
-        merged = std::move(all);
-        INFO("loaded {} entries from {} dictionaries", total, dictionaries.size());
+        INFO("loaded {} entries from {} dictionaries", dictionaries.EntryCount(), dictionaries.DictionaryCount());
     }
 
     std::string CallerModule() {
@@ -283,34 +212,25 @@ namespace JapaneseLocalizer {
     std::optional<std::string> Translate(std::string_view module, std::string_view text) {
         if (text.empty() || !IsEnabled()) return std::nullopt;
 
-        // 前後の空白は残したまま、中身だけを辞書で引く
-        auto begin = text.find_first_not_of(" \t\r\n");
-        if (begin == std::string_view::npos) return std::nullopt;
-        auto end = text.find_last_not_of(" \t\r\n") + 1;
-        std::string core(text.substr(begin, end - begin));
-
-        std::optional<std::string> result;
+        std::optional<std::string> translated;
+        std::string id;
         {
             std::shared_lock lock(dictMutex);
-            if (!module.empty()) {
-                if (auto it = dictionaries.find(std::string(module)); it != dictionaries.end())
-                    result = LookupIn(it->second, core);
-            }
-            if (!result) {
-                if (auto it = dictionaries.find(std::string(CommonDictName)); it != dictionaries.end())
-                    result = LookupIn(it->second, core);
-            }
-            if (!result) result = LookupIn(merged, core);
+            id = module.empty() ? std::string() : dictionaries.ResolveModule(module);
+            translated = dictionaries.Translate(module, text);
         }
 
-        if (!result) {
-            Collect(module, core);
+        if (!translated) {
+            auto begin = text.find_first_not_of(" \t\r\n");
+            if (begin != std::string_view::npos) {
+                auto end = text.find_last_not_of(" \t\r\n") + 1;
+                Collect(id, std::string(text.substr(begin, end - begin)));
+            }
             return std::nullopt;
         }
-        auto translated = std::string(text.substr(0, begin)) + *result + std::string(text.substr(end));
         if (IsCollecting()) {
             std::lock_guard lock(sourceMutex);
-            sources.try_emplace(translated, TranslationSource{std::string(module), std::string(text)});
+            sources.try_emplace(*translated, TranslationSource{id, std::string(text)});
         }
         return translated;
     }

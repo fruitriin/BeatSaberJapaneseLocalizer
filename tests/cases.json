@@ -1,0 +1,28 @@
+{
+  "$comment": "翻訳の試験データ。module は呼び出し元の Mod（正式な ID、Quest の .so 名、空文字列は Mod を判定できないとき）。expected が null なら訳が無いことを期待する。",
+  "cases": [
+    {"name": "完全一致（正式な ID）", "module": "BetterSongList", "text": "Sort", "expected": "順序"},
+    {"name": "完全一致（Quest の .so 名）", "module": "bsl", "text": "Sort", "expected": "順序"},
+    {"name": "大文字小文字が違う .so 名", "module": "SongCore", "text": "Refresh Songs", "expected": "曲を再読み込み"},
+    {"name": "Mod ごとに訳が違う語（BSS）", "module": "BetterSongSearch", "text": "Clear", "expected": "消去"},
+    {"name": "Mod の辞書に無ければ共通辞書", "module": "bsl", "text": "Cancel", "expected": "キャンセル"},
+    {"name": "共通辞書が全辞書より先", "module": "ClockMod", "text": "Load", "expected": "読み込む"},
+    {"name": "Mod の辞書が共通辞書より先", "module": "EasyOffsetQuest", "text": "Load", "expected": "読込"},
+    {"name": "前後の空白は残す", "module": "bsl", "text": "  Sort ", "expected": "  順序 "},
+    {"name": "{0} テンプレート", "module": "ClockMod", "text": "Your Timezone -  JST\nUTC offset -  +0900", "expected": "タイムゾーン -  JST\nUTC との時差 -  +0900"},
+    {"name": "{0} テンプレート（リッチテキストを含む）", "module": "songcore", "text": "Loading songs <size=60%><mspace=0.35em>[0123/0456]</mspace></size>", "expected": "曲を読み込み中 <size=60%><mspace=0.35em>[0123/0456]</mspace></size>"},
+    {"name": "Mod を判定できないときは全辞書", "module": "", "text": "Remove saber clash effect", "expected": "セイバー衝突の演出を消す"},
+    {"name": "対応表に無い Mod は全辞書", "module": "SomeUnknownMod", "text": "Dance Mode", "expected": "ダンスモード"},
+    {"name": "ModifiersCore（Quest の別名 ModifiersCoreQuest）", "module": "ModifiersCoreQuest", "text": "Golf", "expected": "ゴルフ"},
+    {"name": "英語のまま残す語は訳さない", "module": "EasyOffsetQuest", "text": "Save As", "expected": null},
+    {"name": "辞書に無い語", "module": "bsl", "text": "Totally Unknown Label", "expected": null},
+    {"name": "空白だけ", "module": "bsl", "text": "   ", "expected": null}
+  ],
+  "files": [
+    {"name": "正式な ID のファイル", "stem": "BetterSongList", "expected": "BetterSongList"},
+    {"name": "大文字小文字だけ違う（Android の大文字小文字を区別しない保存領域）", "stem": "songcore", "expected": "SongCore"},
+    {"name": "古い .so 名のファイルは読まない", "stem": "bsl", "expected": null},
+    {"name": "共通辞書", "stem": "_common", "expected": "_common"},
+    {"name": "対応表に無い名前はそのまま", "stem": "MyOwnMod", "expected": "MyOwnMod"}
+  ]
+}

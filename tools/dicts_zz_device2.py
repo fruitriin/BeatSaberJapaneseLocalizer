@@ -11,7 +11,7 @@ D["ClockMod"] = {
     "Your Timezone -  {0}\nUTC offset -  {1}": "タイムゾーン -  {0}\nUTC との時差 -  {1}",
 }
 
-D["EasyOffsetQuest"] = {
+D["EasyOffset"] = {
     "<color=#7777ff>Right</color>": "<color=#7777ff>右</color>",
     "<color=#ff6666>Left</color>": "<color=#ff6666>左</color>",
     "Button": "ボタン",
@@ -35,17 +35,17 @@ D["HeartBeatQuest"] = {
     "Stop Scan": "検索停止",
 }
 
-D["anytext"] = {
+D["AnyText"] = {
     "Find": "検索語",
     "Replace": "置換語",
 }
 
-D["beatsync"] = {
+D["BeatSync"] = {
     "Port": "ポート",
     "Pull Beatmaps": "譜面取込",
 }
 
-D["bl"] = {
+D["BeatLeader"] = {
     "Logout": "ログアウト",
     "Password": "パスワード",
     "Show Noticeboard in main menu": "メインメニューにお知らせを表示",
@@ -54,7 +54,7 @@ D["bl"] = {
 }
 
 # AntiVertigo の足場の設定（.bsml を BSML 本体が読む形なので、呼び出し元が bsml になる）
-D["bsml"] = {
+D["BSML"] = {
     "Platform Shape": "足場の形",
     "The shape of the platform": "足場の形",
     "Platform front side offset": "足場の前側の広さ",
@@ -67,12 +67,12 @@ D["bsml"] = {
     "How far the platform extends to the right side": "足場を右側にどこまで広げるか",
 }
 
-D["imagecoverexpander"] = {
+D["ImageCoverExpander"] = {
     "Brightness": "明るさ",
     "Opacity": "不透明度",
 }
 
-D["jdfixer"] = {
+D["JDFixer"] = {
     "Add new condition for the current preset": "このプリセットに条件を追加",
     "Add new preset": "プリセットを追加",
     "Delete current preset": "このプリセットを削除",
@@ -85,7 +85,7 @@ D["jdfixer"] = {
     "Fix Practice NJS": "練習NJS固定",
 }
 
-D["noodleextensions"] = {
+D["NoodleExtensions"] = {
     "Smart: Changes obstacle material based on Chroma coloring to simulate distortion opacity.\nSemiBasic: switches material opaque/transparent if dissolve is applied.\nBasic: retains opaque material color once dissolve is applied":
         "Smart: Chroma の色に合わせて壁のマテリアルを変え、ゆがみの透け具合を再現します。\nSemiBasic: 溶かすと、不透明と透明のマテリアルを切り替えます。\nBasic: 溶かしたあとも不透明な色を保ちます",
     "Disable Qosmetics models on NE maps": "NE 譜面で Qosmetics を使わない",
@@ -95,29 +95,29 @@ D["RandomSongPicker"] = {
     "ControllerButton Binding": "ボタンの割り当て",
 }
 
-D["airbuds-search"] = {
+D["AirbudsSearch"] = {
     "Clear": "消去",
     "Enables better Japanese song/artist search by converting Japanese to romaji for additional search.": "日本語をローマ字でも検索し、曲やアーティストを見つかりやすくします。",
 }
 
-D["songdownloader"] = {
+D["SongDownloader"] = {
     "AutoMapper": "自動生成",
 }
 
-D["songplayhistory"] = {
+D["SongPlayHistory"] = {
     "EnableSongPlayHistory": "プレイ履歴を有効にする",
     "ShowFailed": "失敗した記録も表示",
     "SortByDate": "新しい順に並べる",
     "AverageAccuracy": "平均精度",
 }
 
-D["tricksaberlite"] = {
+D["TrickSaberLite"] = {
     "--- Left Saber Controls ---": "--- 左セイバーの操作 ---",
     "--- Right Saber Controls ---": "--- 右セイバーの操作 ---",
 }
 
 # ---- 2026-11-07 14:50 の実機の記録から ----
-D["playlistmanager"] = {
+D["PlaylistManager"] = {
     ": Add to playlist": ": プレイリストに追加",
     ": Clear selection": ": 選択を解除",
     ": Delete and remove": ": 削除してリストから外す",
@@ -145,18 +145,18 @@ D["playlistmanager"] = {
     "Syncing playlist...": "プレイリストを同期中...",
 }
 
-D["transitions"] = {
+D["Transitions"] = {
     "Show Warning": "警告を表示",
     "Shows the health warning when the game launches": "起動時に健康に関する注意を表示します",
 }
 
 # はみ出したので英語のままにする
-D["EasyOffsetQuest"]["Z Offset"] = ""
-D["songdownloader"]["AutoMapper"] = ""
+D["EasyOffset"]["Z Offset"] = ""
+D["SongDownloader"]["AutoMapper"] = ""
 
 # ---- 曲の「ルール変更」の CUSTOM タブ（ModifiersCoreQuest。項目は BeatLeader が追加する） ----
 # 本体の公式訳: Faster Song = 曲スピードアップ、Super Fast Song = スーパー高速曲
-D["ModifiersCoreQuest"] = {
+D["ModifiersCore"] = {
     "Better Faster Song": "曲スピードアップ（改）",
     "Better Super Fast Song": "スーパー高速曲（改）",
     "Golf": "ゴルフ",
@@ -168,7 +168,7 @@ D["ModifiersCoreQuest"] = {
 }
 
 # SongPlayHistory 0.1.2 でトグルの表示名が設定のキー名から英語の文に変わった（コミット 55632bd）
-D["songplayhistory"].update({
+D["SongPlayHistory"].update({
     "Enable Song Play History": "プレイ履歴を有効にする",
     "Show Failed": "失敗した記録も表示",
     "Average Accuracy": "平均精度",
@@ -176,12 +176,12 @@ D["songplayhistory"].update({
 })
 
 # 改造版 BetterSongList 1.0.12 で足した設定
-D["bsl"] = {
+D["BetterSongList"] = {
     "Random without repeats": "重複なしでランダム",
     "The random button picks every song in the current list once before any song comes up again": "ランダムのボタンで、いまの一覧の曲をひと通り選び終えるまで、同じ曲を選びません",
 }
 
-D["ModifiersCoreQuest"].update({
+D["ModifiersCore"].update({
     "Increases song speed by 20%, note speed by 10%": "曲の速さを 20%、ノーツの速さを 10% 上げます",
     "Increases song speed by 50%, note speed by 25%": "曲の速さを 50%、ノーツの速さを 25% 上げます",
 })

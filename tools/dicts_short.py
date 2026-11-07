@@ -25,7 +25,7 @@ D["RecentlyPlayed"] = {
     "Max History Length (after next map)": "履歴の上限（次の譜面から）",
 }
 
-D["bsl"] = {
+D["BetterSongList"] = {
     "Clear Sort and Filter in Playlists": "プレイリストで条件を解除",
     "Extend Basegame scrollbar": "スクロールバーを拡張",
     "Filter": "絞込",
@@ -34,25 +34,25 @@ D["bsl"] = {
     "PP Accuracy Scale (SS Only)": "PP 精度の倍率（SS のみ）",
 }
 
-D["jdfixer"] = {
+D["JDFixer"] = {
     "Disable Mod": "Mod 無効",
     "Fix Practice NJS": "練習 NJS 固定",
     "Half Values": "半分の値",
     "Level Specific Settings": "レベル別設定",
 }
 
-D["playlistcore"] = {
+D["PlaylistCore"] = {
     "Playlist Scroll Speed": "スクロール速度",
     "Reload All Playlists": "曲目リスト再読込",
 }
 
-D["qbeatsaberplus-gametweaker"] = {
+D["BeatSaberPlus-GameTweaker"] = {
     "Remove cut particles": "切断パーティクルを消す",
     "Remove floor burn particles": "床焦げのパーティクルを消す",
     "Remove saber clash effect": "セイバー衝突の演出を消す",
 }
 
-D["songdownloader"] = {
+D["SongDownloader"] = {
     "Download To Playlist": "プレイリストへ DL",
     "Service": "取得元",
 }

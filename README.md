@@ -1,6 +1,6 @@
-# JapaneseLocalizer（Quest 版 Beat Saber）
+# BeatSaberJapaneseLocalizer
 
-Quest 版 Beat Saber（1.40.8_7379）で、**ほかの Mod の UI を日本語にする Mod** です。Beat Saber 本体は公式に日本語に対応しているので、この Mod が訳すのは Mod の設定画面などの UI だけです。
+Beat Saber で、**ほかの Mod の UI を日本語にする Mod** です。いまは Quest 版 Beat Saber（1.40.8_7379）向けの qmod（JapaneseLocalizer）を作っています。辞書はゲームの版や PC / Quest に依存しない形で持っているので、ほかの版にも広げられる構成にしてあります。Beat Saber 本体は公式に日本語に対応しているので、この Mod が訳すのは Mod の設定画面などの UI だけです。
 
 > **English summary**
 > A Quest Beat Saber (1.40.8_7379) mod that translates the UI of *other mods* into Japanese, using per-mod JSON dictionaries. It hooks the functions that build UI (BSML parser, BSML-Lite, ChatPlex SDK) instead of rewriting every rendered text, so song names and player input are not touched. See the supported mod list below. Requests: open an Issue or contact [@fruitriin on X](https://x.com/fruitriin).
@@ -44,7 +44,7 @@ Quest 版 Beat Saber（1.40.8_7379）で、**ほかの Mod の UI を日本語�
 | Transitions | 1.2.3 | 設定画面 |
 | TrickSaber Lite | 0.1.1 | 設定画面 |
 
-辞書は `dictionaries/` にあります。どの Mod にも出てくる短い言葉（「Enabled」「Reset」など）は `_common.json` にまとめています。
+辞書は `dictionaries/` に、正式な Mod の ID をファイル名にして置いています（例: `BetterSongList.json`）。どの Mod にも出てくる短い言葉（「Enabled」「Reset」など）は `_common.json` にまとめています。
 
 ## 対応してほしい Mod や、訳の直しの要望
 
@@ -57,7 +57,7 @@ Quest 版 Beat Saber（1.40.8_7379）で、**ほかの Mod の UI を日本語�
 
 ## 入れ方
 
-1. [Releases](../../releases) から qmod（`Japanese.Localizer.qmod` など）をダウンロードする
+1. [Releases](../../releases) から qmod（`JapaneseLocalizer-<版>-quest-1.40.8.qmod`）をダウンロードする
 2. [MBF](https://mbf.bsquest.xyz/) の「Upload Files」から qmod を読み込む
 
 辞書は、qmod を入れるときに自動で配置されます。
@@ -80,9 +80,11 @@ Mod 設定の「日本語化」から変えられます。
 
 ## 辞書と書き出しファイル
 
-- 置き場所: `/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/<Mod名>.json`
+- 置き場所: `/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/<正式な Mod の ID>.json`
 - 形式: `{"原文": "訳"}`。`{0}` を含む見出し語はテンプレートとして照合する（例: `"{0} songs": "{0} 曲"`）
 - 引く順: その Mod の辞書 → `_common.json` → 全辞書
+- 呼び出し元の Mod は .so 名で分かるので、`mods.json`（同じ場所に置く）で正式な ID に直してから辞書を引く。`mods.json` に無い .so は、.so 名をそのまま辞書名として使う（例: `libMyMod.so` → `MyMod.json`）
+- 以前の版が残した .so 名の辞書（`bsl.json` など）は、`mods.json` に別名として載っていれば読まない
 - 辞書を書き換えたら、設定の「辞書を読み直す」を押す。一度作られた画面は作り直されないので、確実に見るにはゲームを再起動する
 
 ## しくみ
@@ -96,7 +98,7 @@ Mod 設定の「日本語化」から変えられます。
 | ChatPlex SDK（BeatSaberPlus） | `CText::SetText`、`CPOrSButton::SetText` / `SetTooltip`、`CTextInput::SetPlaceHolder`、`TopNavigationView::SetTitle`、`CTextSegmentedControl::SetTexts` | 表示する文字列。`CDropdown::SetOptions` は訳さない |
 | ModifiersCoreQuest | 公開されている辞書を直接書き換える | ルール変更の CUSTOM タブの名前と説明 |
 
-どの Mod の文字列かは、呼び出し元の .so の名前から決めます（`libsongdownloader.so` → `songdownloader`）。ChatPlex SDK の関数は名前で探してフックするので、版が変わって見つからなければ、何もせずに飛ばします。
+どの Mod の文字列かは、呼び出し元の .so の名前から決め（`libsongdownloader.so` → `songdownloader`）、`mods.json` で正式な ID（`SongDownloader`）に直します。ChatPlex SDK の関数は名前で探してフックするので、版が変わって見つからなければ、何もせずに飛ばします。
 
 ### 訳せない文字
 - Mod がコードから TMP に直接書き込む文字（`text->set_text(...)`）
@@ -106,19 +108,34 @@ Mod 設定の「日本語化」から変えられます。
 ### AnyText との関係
 AnyText は、文字を描画する段階で `Configs/anytext.json` の規則に従って文字を置き換えます。この Mod は部品を作る段階で訳すので、フックする関数は重なりません。ただし、英語の原文に合わせて書いた AnyText の規則は、この Mod が訳した後の文字には当たらなくなります。
 
+## リポジトリの構成
+
+```
+dictionaries/        辞書（ゲームの版に依存しない）。ファイル名は正式な Mod の ID
+mods.json            正式な ID → 表示名と、各プラットフォームでの別名（Quest は .so 名、PC はアセンブリ名）
+tests/               翻訳の試験（Mod の ID・原文・期待する訳）と、その実行スクリプト
+quest/common/        ゲームの版に依存しない C++（辞書の読み込み、照合、別名の解決）
+quest/1.40.8/        Quest 版 1.40.8 向けの qpm パッケージ（フック、設定画面、qmod の作成）
+tools/               辞書の元データ（dicts_*.py）と、辞書を書き出す build_dicts.py
+docs/                開発中のメモとスクリーンショット
+```
+
 ## ビルド
 
-[qpm](https://github.com/QuestPackageManager/QPM.CLI) と PowerShell（`pwsh`）が必要です。
+[qpm](https://github.com/QuestPackageManager/QPM.CLI) と PowerShell（`pwsh`）、ninja が必要です。
 
 ```bash
+cd quest/1.40.8
 qpm restore
-qpm ndk resolve
+qpm ndk resolve -d
 qpm s build -- -release
 rm -f mod.json && qpm s qmod
 ```
 
-- 辞書の元データは `tools/dicts_*.py` にある。`python3 tools/build_dicts.py` で `dictionaries/` と `mod.template.json` の `fileCopies` を作り直す
+- 辞書の元データは `tools/dicts_*.py` にある。`python3 tools/build_dicts.py` で `dictionaries/` と `quest/1.40.8/mod.template.json` の `fileCopies`（辞書と `mods.json` を配置する）を作り直す
 - `mod.json` が残っていると古い依存の範囲で qmod が作られるので、qmod を作る前に消す
+- 翻訳の試験は `tests/run.sh` で実行する。`quest/common` を手元の clang でビルドして、`tests/cases.json` の期待どおりに訳されるかを確かめる（rapidjson のヘッダーは `quest/1.40.8` の `qpm restore` で入るものを使う）
+- GitHub Actions（`.github/workflows/quest-1.40.8.yml`）が、辞書の書き出し・試験・ビルド・qmod の作成を行い、`v*` のタグではリリースに qmod を添付する
 - 開発中のメモ（1行に収まらない訳の一覧と短縮案）とスクリーンショットは `docs/` にある
 
 ## ライセンス
