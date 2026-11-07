@@ -2,7 +2,7 @@
 
 Beat Saber で、ほかの Mod の UI を日本語にする Mod です。
 
-Beat Saber（1.40.8_7379）対応
+Quest版 Beat Saber（1.40.8_7379）対応
 
 PC版、他バージョン、このModが対応していないModへの対応リクエストは、Issue か X の [@fruitriin](https://x.com/fruitriin) まで。
 
