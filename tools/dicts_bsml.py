@@ -88,6 +88,8 @@ D["bsml"] = {
         "Mod 設定へようこそ。ここは Mod が項目を追加するための設定メニューです。壊れにくくするため、ゲーム本体の設定とは分けてあります。Mod を開発していなければ、特に気にする必要はありません。",
     "Error loading settings.": "設定を読み込めませんでした。",
     "Mod Settings": "Mod 設定",
+    "No mods found! showing this to the user...": "Mod が見つかりませんでした",
+    "mods were found, showing buttons!": "Mod が見つかりました",
 }
 
 D["bsl"] = {
@@ -206,6 +208,7 @@ D["songcore"] = {
     "<color=#dd2233>Delete</color>": "<color=#dd2233>削除</color>",
     "<color=#33dd11>Cancel</color>": "<color=#33dd11>キャンセル</color>",
     "Refresh Songs": "曲を再読み込み",
+    "Loading songs <size=60%><mspace=0.35em>[{0}/{1}]</mspace></size>": "曲を読み込み中 <size=60%><mspace=0.35em>[{0}/{1}]</mspace></size>",
     "Refresh your loaded songs": "読み込んだ曲を再読み込みします",
     "Custom Levels": "カスタムレベル",
     "Custom WIP Levels": "作成中のカスタムレベル",

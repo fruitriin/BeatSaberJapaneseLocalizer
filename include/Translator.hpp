@@ -19,6 +19,16 @@ namespace JapaneseLocalizer {
     /// module が空なら共通辞書と全辞書を探す。
     std::optional<std::string> Translate(std::string_view module, std::string_view text);
 
+    /// 訳した結果から、元の文字列と Mod 名を引く（1行に収まらない訳を調べるため）
+    struct TranslationSource {
+        std::string module;
+        std::string original;
+    };
+    std::optional<TranslationSource> FindTranslationSource(std::string const& translated);
+
+    /// 1行に収まらない訳の検出を始める（late_load から1回だけ呼ぶ）
+    void StartLayoutCheck();
+
     /// 翻訳と収集の設定
     bool IsEnabled();
     bool IsCollecting();

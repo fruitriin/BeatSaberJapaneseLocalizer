@@ -39,6 +39,9 @@ namespace JapaneseLocalizer {
         std::unordered_map<std::string, Dictionary> dictionaries;   // キーはファイル名（拡張子なし）
         Dictionary merged;                                            // 全辞書をまとめたもの（Mod 名が決まらないとき用）
 
+        std::mutex sourceMutex;
+        std::unordered_map<std::string, TranslationSource> sources;   // 訳文 → 原文と Mod 名
+
         std::mutex collectMutex;
         std::map<std::string, std::set<std::string>> untranslated;   // Mod 名 → 未翻訳の文字列
         bool untranslatedLoaded = false;
@@ -304,6 +307,17 @@ namespace JapaneseLocalizer {
             Collect(module, core);
             return std::nullopt;
         }
-        return std::string(text.substr(0, begin)) + *result + std::string(text.substr(end));
+        auto translated = std::string(text.substr(0, begin)) + *result + std::string(text.substr(end));
+        if (IsCollecting()) {
+            std::lock_guard lock(sourceMutex);
+            sources.try_emplace(translated, TranslationSource{std::string(module), std::string(text)});
+        }
+        return translated;
+    }
+
+    std::optional<TranslationSource> FindTranslationSource(std::string const& translated) {
+        std::lock_guard lock(sourceMutex);
+        if (auto it = sources.find(translated); it != sources.end()) return it->second;
+        return std::nullopt;
     }
 }
