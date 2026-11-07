@@ -39,6 +39,11 @@ namespace {
         });
         AddHoverHint(collect, "オンにすると、辞書に無い文字列を untranslated.json に、1行に収まらない訳を overflow.json に書き出します");
 
+        auto songName = CreateToggle(parent, "曲名の省略を直す", getModConfig().FixSongNameHeight.GetValue(), [](bool value) {
+            getModConfig().FixSongNameHeight.SetValue(value);
+        });
+        AddHoverHint(songName, "曲一覧で「祝福/The Blessing」のような日本語と英字が混ざる曲名が「祝…」に省略されるのを直します");
+
         auto font = CreateToggle(parent, "日本語フォントをそろえる", getModConfig().ReplaceFont.GetValue(), [](bool value) {
             getModConfig().ReplaceFont.SetValue(value);
         });
