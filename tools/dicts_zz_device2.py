@@ -115,3 +115,41 @@ D["tricksaberlite"] = {
     "--- Left Saber Controls ---": "--- 左セイバーの操作 ---",
     "--- Right Saber Controls ---": "--- 右セイバーの操作 ---",
 }
+
+# ---- 2026-11-07 14:50 の実機の記録から ----
+D["playlistmanager"] = {
+    ": Add to playlist": ": プレイリストに追加",
+    ": Clear selection": ": 選択を解除",
+    ": Delete and remove": ": 削除してリストから外す",
+    ": Delete selected songs": ": 選んだ曲を削除",
+    ": Highlight difficulties": ": 難易度を強調表示",
+    ": Invert selection": ": 選択を反転",
+    ": Remove from playlist": ": プレイリストから外す",
+    ": Select between": ": あいだを選択",
+    ": Use covers as cover": ": 曲のジャケットを表紙に使う",
+    "All songs": "すべての曲",
+    "Are you sure?": "よろしいですか？",
+    "Author": "作者",
+    "CANCEL": "キャンセル",
+    "CONFIRM": "決定",
+    "Downloading songs...": "曲をダウンロード中...",
+    "Has Characteristic": "モードあり",
+    "Has Difficulty": "難易度あり",
+    "No songs": "曲なし",
+    "Only Owned": "所持している曲のみ",
+    "Only Unplayed": "未プレイのみ",
+    "Selection options": "選択のオプション",
+    "Separate search and filter": "検索と絞込を別々にする",
+    "Songs in playlist": "プレイリストの曲",
+    "Sync search and filter": "検索と絞込を連動させる",
+    "Syncing playlist...": "プレイリストを同期中...",
+}
+
+D["transitions"] = {
+    "Show Warning": "警告を表示",
+    "Shows the health warning when the game launches": "起動時に健康に関する注意を表示します",
+}
+
+# はみ出したので英語のままにする
+D["EasyOffsetQuest"]["Z Offset"] = ""
+D["songdownloader"]["AutoMapper"] = ""

@@ -28,12 +28,11 @@ namespace {
         auto container = CreateScrollableSettingsContainer(self->transform);
         auto parent = container->transform;
 
-        AddLine(parent, "ほかの Mod の UI を、JSON 辞書で日本語に置き換えます。", 3.5f);
-        AddLine(parent, "辞書の場所: Mods/JapaneseLocalizer/<Mod名>.json", 3.0f);
-
-        CreateToggle(parent, "日本語に置き換える", getModConfig().Enabled.GetValue(), [](bool value) {
+        // 説明文の行は、縦並びの中で高さを持たずトグルに重なったので、説明はマウスを乗せたときの文に入れる
+        auto enabled = CreateToggle(parent, "日本語に置き換える", getModConfig().Enabled.GetValue(), [](bool value) {
             getModConfig().Enabled.SetValue(value);
         });
+        AddHoverHint(enabled, "ほかの Mod の UI を、Mods/JapaneseLocalizer/<Mod名>.json の辞書で日本語に置き換えます");
         auto collect = CreateToggle(parent, "未翻訳収集モード", getModConfig().CollectUntranslated.GetValue(), [](bool value) {
             getModConfig().CollectUntranslated.SetValue(value);
         });

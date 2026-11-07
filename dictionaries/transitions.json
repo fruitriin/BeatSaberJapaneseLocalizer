@@ -2,6 +2,8 @@
   "Forces all scene transitions to be a specific duration": "すべての画面切り替えを、指定した長さにします",
   "Override Scene Transitions": "画面切り替えの長さを上書き",
   "Scene Transitions Length": "画面切り替えの長さ",
+  "Show Warning": "警告を表示",
+  "Shows the health warning when the game launches": "起動時に健康に関する注意を表示します",
   "The duration to force for all transitions": "すべての画面切り替えに使う長さ",
   "Transitions": "Transitions"
 }
