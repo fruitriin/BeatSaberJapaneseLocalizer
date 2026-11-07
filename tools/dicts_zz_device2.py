@@ -174,3 +174,9 @@ D["songplayhistory"].update({
     "Average Accuracy": "平均精度",
     "Sort by Date": "新しい順に並べる",
 })
+
+# 改造版 BetterSongList 1.0.12 で足した設定
+D["bsl"] = {
+    "Random without repeats": "重複なしでランダム",
+    "The random button picks every song in the current list once before any song comes up again": "ランダムのボタンで、いまの一覧の曲をひと通り選び終えるまで、同じ曲を選びません",
+}
