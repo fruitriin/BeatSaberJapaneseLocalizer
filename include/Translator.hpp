@@ -29,6 +29,9 @@ namespace JapaneseLocalizer {
     /// 1行に収まらない訳の検出を始める（late_load から1回だけ呼ぶ）
     void StartLayoutCheck();
 
+    /// 日本語の字形をそろえるフォントの差し替えを始める（late_load から1回だけ呼ぶ）
+    void StartFontReplacer();
+
     /// 翻訳と収集の設定
     bool IsEnabled();
     bool IsCollecting();

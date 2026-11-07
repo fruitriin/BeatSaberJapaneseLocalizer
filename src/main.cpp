@@ -29,6 +29,11 @@ namespace {
         });
         AddHoverHint(collect, "オンにすると、辞書に無い文字列を untranslated.json に、1行に収まらない訳を overflow.json に書き出します");
 
+        auto font = CreateToggle(parent, "日本語フォントをそろえる", getModConfig().ReplaceFont.GetValue(), [](bool value) {
+            getModConfig().ReplaceFont.SetValue(value);
+        });
+        AddHoverHint(font, "Mods/JapaneseLocalizer/fonts/ に置いたフォント（無ければ端末の Noto Sans CJK）で日本語を表示します。再起動後に反映されます");
+
         CreateUIButton(parent, "辞書を読み直す", []() { JapaneseLocalizer::LoadDictionaries(); });
         CreateText(parent, "読み直した訳は、画面を作り直したときに反映されます。", TMPro::FontStyles::Italic, 3.0f);
     }
@@ -48,6 +53,7 @@ extern "C" __attribute__((visibility("default"))) void late_load() {
     JapaneseLocalizer::InstallBSMLHooks();
     JapaneseLocalizer::InstallChatPlexHooks();
     JapaneseLocalizer::StartLayoutCheck();
+    JapaneseLocalizer::StartFontReplacer();
 
     BSML::Register::RegisterSettingsMenu("日本語化", SettingsDidActivate, false);
     INFO("late_load done");
