@@ -1,15 +1,19 @@
 {
+  "Average Accuracy": "平均精度",
   "AverageAccuracy": "平均精度",
   "Display failed records": "失敗した記録も表示",
+  "Enable Song Play History": "プレイ履歴を有効にする",
   "EnableSongPlayHistory": "プレイ履歴を有効にする",
   "Exclude remaining notes when evaluating accuracy": "精度の計算で残りのノーツを含めない",
   "Highscore": "ハイスコア",
   "Latest records (otherwise best records) on the top": "最新の記録を上に表示（オフなら最高記録）",
   "No record": "記録なし",
   "Play Count": "プレイ回数",
+  "Show Failed": "失敗した記録も表示",
   "ShowFailed": "失敗した記録も表示",
   "Song Play History": "プレイ履歴",
   "Song Play History Settings": "プレイ履歴の設定",
+  "Sort by Date": "新しい順に並べる",
   "SortByDate": "新しい順に並べる",
   "Will not save new records if disabled": "オフにすると新しい記録を保存しません"
 }

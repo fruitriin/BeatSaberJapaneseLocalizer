@@ -166,3 +166,11 @@ D["ModifiersCoreQuest"] = {
     "Score is how much you dance. Energy also drains when you stop dancing for a while":
         "どれだけ踊ったかがスコアになります。しばらく踊らないと、エネルギーも減ります",
 }
+
+# SongPlayHistory 0.1.2 でトグルの表示名が設定のキー名から英語の文に変わった（コミット 55632bd）
+D["songplayhistory"].update({
+    "Enable Song Play History": "プレイ履歴を有効にする",
+    "Show Failed": "失敗した記録も表示",
+    "Average Accuracy": "平均精度",
+    "Sort by Date": "新しい順に並べる",
+})
