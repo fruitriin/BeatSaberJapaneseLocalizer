@@ -62,6 +62,7 @@ extern "C" __attribute__((visibility("default"))) void late_load() {
     JapaneseLocalizer::LoadDictionaries();
     JapaneseLocalizer::InstallBSMLHooks();
     JapaneseLocalizer::InstallChatPlexHooks();
+    JapaneseLocalizer::InstallCellDiagnostics();
     JapaneseLocalizer::StartLayoutCheck();
     JapaneseLocalizer::StartFontReplacer();
 
