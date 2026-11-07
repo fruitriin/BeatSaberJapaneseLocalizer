@@ -32,6 +32,9 @@ namespace JapaneseLocalizer {
     /// 日本語の字形をそろえるフォントの差し替えを始める（late_load から1回だけ呼ぶ）
     void StartFontReplacer();
 
+    /// 曲の「ルール変更」に Mod が追加する項目を訳し始める（late_load から1回だけ呼ぶ）
+    void StartModifierLocalizer();
+
     /// 翻訳と収集の設定
     bool IsEnabled();
     bool IsCollecting();

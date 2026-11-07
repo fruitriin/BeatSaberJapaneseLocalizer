@@ -153,3 +153,16 @@ D["transitions"] = {
 # はみ出したので英語のままにする
 D["EasyOffsetQuest"]["Z Offset"] = ""
 D["songdownloader"]["AutoMapper"] = ""
+
+# ---- 曲の「ルール変更」の CUSTOM タブ（ModifiersCoreQuest。項目は BeatLeader が追加する） ----
+# 本体の公式訳: Faster Song = 曲スピードアップ、Super Fast Song = スーパー高速曲
+D["ModifiersCoreQuest"] = {
+    "Better Faster Song": "曲スピードアップ（改）",
+    "Better Super Fast Song": "スーパー高速曲（改）",
+    "Golf": "ゴルフ",
+    "Dance Mode": "ダンスモード",
+    "Score goes only to the Golf leaderboard, where lower accuracy is better. Needs accuracy of at most 50%":
+        "スコアは Golf のリーダーボードにだけ送られ、精度が低いほど上位になります。精度 50% 以下が必要です",
+    "Score is how much you dance. Energy also drains when you stop dancing for a while":
+        "どれだけ踊ったかがスコアになります。しばらく踊らないと、エネルギーも減ります",
+}

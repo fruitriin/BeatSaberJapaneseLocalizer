@@ -43,6 +43,11 @@ namespace {
         });
         AddHoverHint(songName, "曲一覧で「祝福/The Blessing」のような日本語と英字が混ざる曲名が「祝…」に省略されるのを直します");
 
+        auto modifiers = CreateToggle(parent, "ルール変更の追加項目を訳す", getModConfig().TranslateModifiers.GetValue(), [](bool value) {
+            getModConfig().TranslateModifiers.SetValue(value);
+        });
+        AddHoverHint(modifiers, "曲の「ルール変更」の CUSTOM タブに Mod が追加する項目（Dance Mode など）の名前と説明を訳します。再起動後に反映されます");
+
         auto font = CreateToggle(parent, "日本語フォントをそろえる", getModConfig().ReplaceFont.GetValue(), [](bool value) {
             getModConfig().ReplaceFont.SetValue(value);
         });
@@ -69,6 +74,7 @@ extern "C" __attribute__((visibility("default"))) void late_load() {
     JapaneseLocalizer::InstallCellDiagnostics();
     JapaneseLocalizer::StartLayoutCheck();
     JapaneseLocalizer::StartFontReplacer();
+    JapaneseLocalizer::StartModifierLocalizer();
 
     BSML::Register::RegisterSettingsMenu("日本語化", SettingsDidActivate, false);
     INFO("late_load done");

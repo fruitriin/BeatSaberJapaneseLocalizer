@@ -43,6 +43,10 @@
       "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/IntroSkip.json"
     },
     {
+      "name": "ModifiersCoreQuest.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/ModifiersCoreQuest.json"
+    },
+    {
       "name": "RandomSongPicker.json",
       "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/RandomSongPicker.json"
     },
