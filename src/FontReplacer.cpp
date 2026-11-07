@@ -14,6 +14,7 @@
 #include "UnityEngine/Font.hpp"
 #include "UnityEngine/Material.hpp"
 #include "UnityEngine/Object.hpp"
+#include "UnityEngine/Shader.hpp"
 #include "UnityEngine/Resources.hpp"
 #include "UnityEngine/TextCore/LowLevel/GlyphRenderMode.hpp"
 #include "UnityEngine/Texture2D.hpp"
@@ -96,8 +97,22 @@ namespace JapaneseLocalizer {
                 ERROR("could not load font file {}", path);
                 return false;
             }
-            auto font = TMPro::TMP_FontAsset::CreateFontAsset(unityFont, 64, 6, UnityEngine::TextCore::LowLevel::GlyphRenderMode::SDFAA, 2048, 2048,
-                                                              TMPro::AtlasPopulationMode::Dynamic, true);
+            INFO("loaded font file {}", path);
+
+            // CreateFontAsset は "TextMeshPro/Mobile/Distance Field" を Shader.Find で探してマテリアルを作る。
+            // ゲームのビルドにはこのシェーダーが無いので、作る間だけ本体のフォントのシェーダーを渡しておく
+            auto previousShader = TMPro::ShaderUtilities::getStaticF_k_ShaderRef_MobileSDF();
+            bool overrideShader = !previousShader && templateMaterial && templateMaterial->get_shader();
+            if (overrideShader) TMPro::ShaderUtilities::setStaticF_k_ShaderRef_MobileSDF(templateMaterial->get_shader());
+            UnityW<TMPro::TMP_FontAsset> font;
+            try {
+                font = TMPro::TMP_FontAsset::CreateFontAsset(unityFont, 64, 6, UnityEngine::TextCore::LowLevel::GlyphRenderMode::SDFAA, 2048, 2048,
+                                                             TMPro::AtlasPopulationMode::Dynamic, true);
+            } catch (...) {
+                if (overrideShader) TMPro::ShaderUtilities::setStaticF_k_ShaderRef_MobileSDF(previousShader);
+                throw;
+            }
+            if (overrideShader) TMPro::ShaderUtilities::setStaticF_k_ShaderRef_MobileSDF(previousShader);
             if (!font) {
                 ERROR("could not create a TMP font from {}", path);
                 return false;
