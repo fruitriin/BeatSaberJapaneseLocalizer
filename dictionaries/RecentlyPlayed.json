@@ -2,7 +2,7 @@
   "Clear History": "履歴を消去",
   "Filter duplicates": "重複を除く",
   "History of played hashes": "プレイした曲の履歴",
-  "Max History Length (after next map)": "履歴の最大件数（次の譜面から反映）",
+  "Max History Length (after next map)": "履歴の上限（次の譜面から）",
   "Recently Played": "最近プレイした曲",
   "Record watched Replays": "見たリプレイも記録"
 }

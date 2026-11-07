@@ -22,14 +22,14 @@
   "PlayerOptions": "プレイヤーオプション",
   "Remove all debris spawn": "ノーツの破片をすべて消す",
   "Remove base game filter": "本体のフィルターを消す",
-  "Remove cut particles": "切ったときのパーティクルを消す",
+  "Remove cut particles": "切断パーティクルを消す",
   "Remove floor burn marks": "床の焦げ跡を消す",
-  "Remove floor burn particles": "床の焦げのパーティクルを消す",
+  "Remove floor burn particles": "床焦げのパーティクルを消す",
   "Remove full combo loss animation": "フルコンボが途切れたときの演出を消す",
   "Remove music group logos (BTS, LinkinPark...) in environments": "環境内のアーティストのロゴ（BTS、Linkin Park など）を消す",
   "Remove new content promo": "新コンテンツの宣伝を消す",
   "Remove obstacle particles": "壁のパーティクルを消す",
-  "Remove saber clash effect": "セイバー同士がぶつかる演出を消す",
+  "Remove saber clash effect": "セイバー衝突の演出を消す",
   "Remove world particles": "空間のパーティクルを消す",
   "game tweaker configuration?": "Game Tweaker の設定をリセットしますか？"
 }

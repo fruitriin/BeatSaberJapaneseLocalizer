@@ -38,3 +38,7 @@ overflow-list.md の 28 件について、短い訳の候補を挙げる。
 
 - 幅が 8〜9 の欄（Clear、FILTERS、More、Sort、Filter）は、全角2字が限度である。並べ替え・フィルターは本体の UI では「並べ替え」「フィルター」と呼んでいるので、2字にすると本体と呼び名がずれる。
 - 目安の字数は概算である。採用した訳は、未翻訳収集モードでもう一度 overflow.json を取って確かめる。
+
+## 採用した訳（2026-11-07）
+
+第1案を採用した。ただし Reload All Playlists は「曲目リスト再読込」にした。PP Accuracy Scale (SS Only) は「PP 精度の倍率（SS のみ）」にした（値の表示と重なっていたため）。辞書の元データは tools/dicts_short.py にある。
