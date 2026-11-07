@@ -35,6 +35,11 @@ D["songdownloader"] = {
     "Required": "必須",
     "Not Required": "不要",
     "Excluded": "除外",
+    "If MappingExtensions maps should be included in search results": "Mapping Extensions の譜面を検索結果に含めるか",
+    "If NoodleExtensions maps should be included in search results": "Noodle Extensions の譜面を検索結果に含めるか",
+    "Selected Service to get Information from!": "情報を取得するサービス",
+    "Service": "サービス",
+    "List": "一覧",
 }
 
 D["playlistcore"] = {
@@ -49,6 +54,8 @@ D["playlistcore"] = {
     "Removing default playlists from being shown": "標準のプレイリストを表示しない",
     "No playlists are contained in the filtering options selected.": "選んだ絞り込みの条件に合うプレイリストはありません。",
     "Playlist Core": "Playlist Core",
+    "Bookmarks": "ブックマーク",
+    "New Playlist": "新しいプレイリスト",
 }
 
 D["RandomSongPicker"] = {
@@ -160,6 +167,7 @@ D["chatplex-sdk-bs"] = {
     "Enable": "有効にする",
     "Disable": "無効にする",
     "Back": "戻る",
+    "<b>Welcome to QBeatSaberPlus {0}</b>\nMade by HardCPP!": "<b>QBeatSaberPlus {0} へようこそ</b>\n作者: HardCPP",
 }
 
 D["qbeatsaberplus-gametweaker"] = {
@@ -193,6 +201,11 @@ D["qbeatsaberplus-gametweaker"] = {
     "Level failed color": "失敗したレベルの色",
     "Game Tweaker": "Game Tweaker",
     "game tweaker configuration?": "Game Tweaker の設定をリセットしますか？",
+    "MainMenu": "メインメニュー",
+    "LevelSelection": "曲選択",
+    "PlayerOptions": "プレイヤーオプション",
+    "<line-height=125%><b>Game Tweaker</b>\n<i><color=#CCCCCCFF>This module allow you to customize your game experience, remove some boring base game features, and add new cool features/tweaks</color></i>":
+        "<line-height=125%><b>Game Tweaker</b>\n<i><color=#CCCCCCFF>ゲームの体験を好みに合わせて調整するモジュールです。本体の邪魔な演出を消したり、新しい機能や調整を加えたりできます</color></i>",
 }
 
 D["qbeatsaberplus-menumusic"] = {
@@ -250,6 +263,11 @@ D["qbeatsaberplus-notetweaker"] = {
     "Bomb color": "爆弾の色",
     "Arcs intensity": "アークの明るさ",
     "Arcs haptics": "アークの振動",
+    "Arcs": "アーク",
+    "Dots": "ドット",
+    "BurstNotes": "チェーン",
+    "<b><color=yellow>Profiles</color></b>": "<b><color=yellow>プロファイル</color></b>",
+    "<b>Note Tweaker</b>\n<i><color=#CCCCCCFF>This module allows you to customize the default notes</color></i>": "<b>Note Tweaker</b>\n<i><color=#CCCCCCFF>標準のノーツを好みに合わせて調整するモジュールです</color></i>",
 }
 
 D["qbeatsaberplus-multiplayer"] = {
@@ -309,4 +327,6 @@ D["qbeatsaberplus-multiplayer"] = {
     "<color=yellow>Verifying map on BeatSaver...": "<color=yellow>BeatSaver で譜面を確認中...",
     "<color=yellow>Select anyway?": "<color=yellow>それでも選びますか？",
     "<i><alpha=#80>No BeatMap selected...": "<i><alpha=#80>譜面が選ばれていません...",
+    "GamePlay": "ゲームプレイ",
+    "Avatar": "アバター",
 }

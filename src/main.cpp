@@ -8,18 +8,28 @@
 #include "bsml/shared/BSML-Lite.hpp"
 #include "HMUI/ViewController.hpp"
 #include "UnityEngine/RectTransform.hpp"
+#include "UnityEngine/GameObject.hpp"
+#include "UnityEngine/UI/LayoutElement.hpp"
 
 static modloader::ModInfo modInfo{MOD_ID, VERSION, 0};
 
 namespace {
+    // 縦並びのレイアウトの中で、高さを持った1行のテキストを置く（高さが無いと上下の部品と重なる）
+    void AddLine(UnityEngine::Transform* parent, std::string_view text, float fontSize) {
+        auto line = BSML::Lite::CreateText(parent, text, TMPro::FontStyles::Normal, fontSize);
+        auto layout = line->get_gameObject()->AddComponent<UnityEngine::UI::LayoutElement*>();
+        layout->set_preferredHeight(fontSize + 2.0f);
+        layout->set_preferredWidth(90.0f);
+    }
+
     void SettingsDidActivate(HMUI::ViewController* self, bool firstActivation, bool, bool) {
         if (!firstActivation) return;
         using namespace BSML::Lite;
         auto container = CreateScrollableSettingsContainer(self->transform);
         auto parent = container->transform;
 
-        CreateText(parent, "ほかの Mod の UI を、JSON 辞書で日本語に置き換えます。", TMPro::FontStyles::Normal, 3.5f);
-        CreateText(parent, "辞書の場所: Mods/JapaneseLocalizer/<Mod名>.json", TMPro::FontStyles::Normal, 3.0f);
+        AddLine(parent, "ほかの Mod の UI を、JSON 辞書で日本語に置き換えます。", 3.5f);
+        AddLine(parent, "辞書の場所: Mods/JapaneseLocalizer/<Mod名>.json", 3.0f);
 
         CreateToggle(parent, "日本語に置き換える", getModConfig().Enabled.GetValue(), [](bool value) {
             getModConfig().Enabled.SetValue(value);
@@ -35,7 +45,7 @@ namespace {
         AddHoverHint(font, "Mods/JapaneseLocalizer/fonts/ に置いたフォント（無ければ端末の Noto Sans CJK）で日本語を表示します。再起動後に反映されます");
 
         CreateUIButton(parent, "辞書を読み直す", []() { JapaneseLocalizer::LoadDictionaries(); });
-        CreateText(parent, "読み直した訳は、画面を作り直したときに反映されます。", TMPro::FontStyles::Italic, 3.0f);
+        AddLine(parent, "読み直した訳は、画面を作り直したときに反映されます。", 3.0f);
     }
 }
 

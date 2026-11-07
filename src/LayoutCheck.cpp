@@ -125,11 +125,12 @@ namespace JapaneseLocalizer {
                 float lineHeight = text->GetPreferredValues(StringW("あ"), width, 100000.0f).y;
                 f.lines = EstimateLines(text, content, width, lineHeight);
                 f.originalLines = EstimateLines(text, StringW(source->original), width, lineHeight);
-                problem = f.lines > f.originalLines;
+                problem = f.lines > f.originalLines && f.originalLines == 1;
             } else {
                 f.translatedWidth = text->GetPreferredValues(content).x;
                 f.originalWidth = text->GetPreferredValues(StringW(source->original)).x;
-                problem = f.translatedWidth > width + 0.5f;
+                // 原文も収まっていないなら、配置が決まる前に測ったものとみなす
+                problem = f.translatedWidth > width + 0.5f && f.originalWidth <= width + 0.5f;
             }
             if (!problem) return false;
 
