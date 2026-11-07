@@ -1,0 +1,82 @@
+{
+  "_QPVersion": "0.1.2",
+  "name": "${mod_name}",
+  "id": "${mod_id}",
+  "author": "riin",
+  "version": "${version}",
+  "packageId": "com.beatgames.beatsaber",
+  "packageVersion": "1.40.8_7379",
+  "description": "ほかの Mod の UI（BSML / BSML-Lite / ChatPlex SDK）を、Mod ごとの JSON 辞書で日本語に置き換えます。",
+  "dependencies": [],
+  "modFiles": [],
+  "lateModFiles": [
+    "${binary}"
+  ],
+  "libraryFiles": [],
+  "fileCopies": [
+    {
+      "name": "BetterHaptics.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/BetterHaptics.json"
+    },
+    {
+      "name": "BetterSongSearch.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/BetterSongSearch.json"
+    },
+    {
+      "name": "RandomSongPicker.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/RandomSongPicker.json"
+    },
+    {
+      "name": "RecentlyPlayed.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/RecentlyPlayed.json"
+    },
+    {
+      "name": "_common.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/_common.json"
+    },
+    {
+      "name": "bsl.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/bsl.json"
+    },
+    {
+      "name": "bsml.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/bsml.json"
+    },
+    {
+      "name": "chatplex-sdk-bs.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/chatplex-sdk-bs.json"
+    },
+    {
+      "name": "jdfixer.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/jdfixer.json"
+    },
+    {
+      "name": "playlistcore.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/playlistcore.json"
+    },
+    {
+      "name": "qbeatsaberplus-gametweaker.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/qbeatsaberplus-gametweaker.json"
+    },
+    {
+      "name": "qbeatsaberplus-menumusic.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/qbeatsaberplus-menumusic.json"
+    },
+    {
+      "name": "qbeatsaberplus-multiplayer.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/qbeatsaberplus-multiplayer.json"
+    },
+    {
+      "name": "qbeatsaberplus-notetweaker.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/qbeatsaberplus-notetweaker.json"
+    },
+    {
+      "name": "songcore.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/songcore.json"
+    },
+    {
+      "name": "songdownloader.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/songdownloader.json"
+    }
+  ]
+}

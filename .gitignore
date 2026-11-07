@@ -1,0 +1,10 @@
+build/
+extern/
+extern.cmake
+qpm_defines.cmake
+qpm.shared.json
+mod.json
+*.qmod
+ndkpath.txt
+.cache/
+__pycache__/

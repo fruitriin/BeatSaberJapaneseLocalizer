@@ -1,0 +1,13 @@
+{
+  "No playlists are contained in the filtering options selected.": "選んだ絞り込みの条件に合うプレイリストはありません。",
+  "Playlist Core": "Playlist Core",
+  "Playlist Scroll Speed": "プレイリストのスクロール速度",
+  "Reload All Playlists": "すべてのプレイリストを読み直す",
+  "Reload New Playlists": "新しいプレイリストを読み込む",
+  "Reload Playlists": "プレイリストを読み直す",
+  "Reloads all playlists from the playlist folder": "プレイリストのフォルダーから、すべてのプレイリストを読み直します",
+  "Reloads all playlists!": "すべてのプレイリストを読み直します",
+  "Reloads new playlists from the playlist folder": "プレイリストのフォルダーから、新しいプレイリストを読み込みます",
+  "Removing default playlists from being shown": "標準のプレイリストを表示しない",
+  "The speed at which to scroll through the playlists with the joystick.": "スティックでプレイリストをスクロールするときの速さ"
+}

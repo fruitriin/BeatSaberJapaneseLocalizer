@@ -1,0 +1,11 @@
+{
+  "ERROR PARSING BSML FILE": "BSML ファイルの読み込みに失敗しました",
+  "Error loading gameplay tab.": "ゲームプレイのタブを読み込めませんでした。",
+  "Error loading settings.": "設定を読み込めませんでした。",
+  "Mod Settings": "Mod 設定",
+  "Mods": "Mod",
+  "None of your currently installed mods add any buttons to this part of the menu!": "インストール済みの Mod の中に、このメニューへボタンを追加するものはありません。",
+  "Show/Hide Tabs": "タブの表示 / 非表示",
+  "Vanilla": "標準",
+  "Welcome to Mod Settings! If you're wondering what this new menu is, it's a separate settings menu that mods can add to. This menu is separated from the base game's settings in order to make it less likely to break. Basically, if you're not a mod developer, then don't worry about it.": "Mod 設定へようこそ。ここは Mod が項目を追加するための設定メニューです。壊れにくくするため、ゲーム本体の設定とは分けてあります。Mod を開発していなければ、特に気にする必要はありません。"
+}

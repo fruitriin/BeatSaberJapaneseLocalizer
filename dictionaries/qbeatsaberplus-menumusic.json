@@ -1,0 +1,19 @@
+{
+  "<alpha=#AA>No name...": "<alpha=#AA>名前なし...",
+  "Custom music folder is: QBeatSaberPlus/MenuMusix/CustomMusic": "カスタム音楽のフォルダー: QBeatSaberPlus/MenuMusix/CustomMusic",
+  "Loop current song": "いまの曲を繰り返す",
+  "Map not found!": "譜面が見つかりません",
+  "Menu Music | Settings": "Menu Music | 設定",
+  "Music provider": "音楽の取得元",
+  "Musics were reload!": "音楽を読み直しました",
+  "No name...": "名前なし...",
+  "Play it": "この曲をプレイ",
+  "Play songs from beginning": "曲を最初から再生",
+  "Playback volume": "再生の音量",
+  "Replace boring ambient noise by music!": "メニューの環境音を音楽に置き換えます",
+  "Show player interface": "プレイヤーを表示",
+  "Song artist...": "アーティスト...",
+  "Song name...": "曲名...",
+  "Start a new song on scene change": "画面が切り替わったら次の曲を再生",
+  "all Menu Music settings?": "Menu Music の設定をすべてリセットしますか？"
+}
