@@ -1,11 +1,24 @@
-# BeatSaberJapaneseLocalizer
+# BeatSaber Mods日本語化Mod
 
-Beat Saber で、**ほかの Mod の UI を日本語にする Mod** です。いまは Quest 版 Beat Saber（1.40.8_7379）向けの qmod（JapaneseLocalizer）を作っています。辞書はゲームの版や PC / Quest に依存しない形で持っているので、ほかの版にも広げられる構成にしてあります。Beat Saber 本体は公式に日本語に対応しているので、この Mod が訳すのは Mod の設定画面などの UI だけです。
+Beat Saber で、ほかの Mod の UI を日本語にする Mod です。
+
+Beat Saber（1.40.8_7379）対応
+
+PC版、他バージョン、このModが対応していないModへの対応リクエストは、Issue か X の [@fruitriin](https://x.com/fruitriin) まで。
 
 > **English summary**
 > A Quest Beat Saber (1.40.8_7379) mod that translates the UI of *other mods* into Japanese, using per-mod JSON dictionaries. It hooks the functions that build UI (BSML parser, BSML-Lite, ChatPlex SDK) instead of rewriting every rendered text, so song names and player input are not touched. See the supported mod list below. Requests: open an Issue or contact [@fruitriin on X](https://x.com/fruitriin).
 
 ![BetterSongList の設定画面を訳したところ](docs/screenshots/bettersonglist-settings.png)
+
+## 入れ方
+
+1. [Releases](../../releases) から qmod（`JapaneseLocalizer-<版>-quest-1.40.8.qmod`）をダウンロードする
+2. [MBF](https://mbf.bsquest.xyz/) の「Upload Files」から qmod を読み込む
+
+辞書は、qmod を入れるときに自動で配置されます。
+
+必要な Mod（MBF が自動で入れます）: beatsaber-hook、BSML、custom-types、paperlog、tinyxml2
 
 ## 対応している Mod
 
@@ -54,15 +67,6 @@ Beat Saber で、**ほかの Mod の UI を日本語にする Mod** です。い
 - Mod の名前と版（MBF の一覧に出ている版）
 - 訳がおかしい場合は、その画面のスクリーンショット
 - 設定の「未翻訳収集モード」をオンにして画面を開くと、訳の無い文字列が `untranslated.json` に、1行に収まらない訳が `overflow.json` に書き出されます。このファイルを添えてもらえると、すぐに辞書に足せます（場所は下の「辞書と書き出しファイル」）
-
-## 入れ方
-
-1. [Releases](../../releases) から qmod（`JapaneseLocalizer-<版>-quest-1.40.8.qmod`）をダウンロードする
-2. [MBF](https://mbf.bsquest.xyz/) の「Upload Files」から qmod を読み込む
-
-辞書は、qmod を入れるときに自動で配置されます。
-
-必要な Mod（MBF が自動で入れます）: beatsaber-hook、BSML、custom-types、paperlog、tinyxml2
 
 ## 設定
 
@@ -129,7 +133,7 @@ cd quest/1.40.8
 qpm restore
 qpm ndk resolve -d
 qpm s build -- -release
-rm -f mod.json && qpm s qmod
+rm -f mod.json && qpm s qmod -- -qmodName JapaneseLocalizer
 ```
 
 - 辞書の元データは `tools/dicts_*.py` にある。`python3 tools/build_dicts.py` で `dictionaries/` と `quest/1.40.8/mod.template.json` の `fileCopies`（辞書と `mods.json` を配置する）を作り直す

@@ -60,9 +60,8 @@ jobs:
         run: |
           rm -f mod.json
           qpm qmod manifest
-          qpm s qmod
           version=$(jq -r .version mod.json)
-          mv "Japanese Localizer.qmod" "JapaneseLocalizer-${version}-quest-1.40.8.qmod"
+          qpm s qmod -- -qmodName "JapaneseLocalizer-${version}-quest-1.40.8"
 
       - uses: actions/upload-artifact@v4
         with:
