@@ -10,6 +10,11 @@
 #include "TMPro/AtlasPopulationMode.hpp"
 #include "TMPro/ShaderUtilities.hpp"
 #include "TMPro/TMP_FontAsset.hpp"
+#include "TMPro/TMP_Character.hpp"
+#include "UnityEngine/TextCore/Glyph.hpp"
+#include "UnityEngine/TextCore/GlyphMetrics.hpp"
+#include "UnityEngine/TextCore/FaceInfo.hpp"
+#include "System/Collections/Generic/Dictionary_2.hpp"
 #include "TMPro/TMP_Text.hpp"
 #include "UnityEngine/Font.hpp"
 #include "UnityEngine/Material.hpp"
@@ -131,20 +136,36 @@ namespace JapaneseLocalizer {
                                fi.get_lineHeight(), fi.get_ascentLine(), fi.get_descentLine());
         }
 
+        // 「あ」の1字あたりの送り幅を、pointSize あたりの値（字の拡大率も掛けたもの）で返す
+        std::optional<float> AdvancePerPoint(TMPro::TMP_FontAsset* font, uint32_t unicode) {
+            TMPro::TMP_Character* character = nullptr;
+            auto table = font->get_characterLookupTable();
+            if (!table || !table->TryGetValue(unicode, byref(character)) || !character) return std::nullopt;
+            auto glyph = character->get_glyph();
+            if (!glyph) return std::nullopt;
+            auto fi = font->get_faceInfo();
+            float advance = glyph->get_metrics().get_horizontalAdvance() * glyph->get_scale() * character->get_scale();
+            INFO("  {} U+{:04X}: advance {:.2f} glyphScale {:.3f} charScale {:.3f} pointSize {} faceScale {:.3f}", FontName(font), unicode,
+                 glyph->get_metrics().get_horizontalAdvance(), glyph->get_scale(), character->get_scale(), fi.get_pointSize(), fi.get_scale());
+            return advance / (float) fi.get_pointSize() * fi.get_scale();
+        }
+
         // 本体の日本語フォント（NotoSansJP-Medium SDF）と字の大きさをそろえる。
-        // TMP は「フォントの大きさ / pointSize × scale」で字を拡大するので、1行の高さがそろうよう scale を合わせる
+        // 1行の高さの比率は同じでも、本体は字ごとの拡大率で小さくしてあるので、「あ」の送り幅で比べて faceInfo.scale を合わせる
         void MatchScale(TMPro::TMP_FontAsset* font, TMPro::TMP_FontAsset* reference) {
             if (!font || !reference) return;
-            auto ref = reference->get_faceInfo();
-            auto own = font->get_faceInfo();
-            INFO("reference {}: {}", FontName(reference), Describe(ref));
-            INFO("custom font before: {}", Describe(own));
-            float refHeight = ref.get_lineHeight() / (float) ref.get_pointSize() * ref.get_scale();
-            float ownHeight = own.get_lineHeight() / (float) own.get_pointSize() * own.get_scale();
-            if (refHeight <= 0 || ownHeight <= 0) return;
-            own.set_scale(own.get_scale() * refHeight / ownHeight);
-            font->set_faceInfo(own);
-            INFO("custom font after: {}", Describe(own));
+            constexpr uint32_t Probe = 0x3042;   // あ
+            font->TryAddCharacters(StringW(u"あ"), false);
+            auto ref = AdvancePerPoint(reference, Probe);
+            auto own = AdvancePerPoint(font, Probe);
+            if (!ref || !own || *ref <= 0 || *own <= 0) {
+                WARNING("could not compare glyph sizes with {}", FontName(reference));
+                return;
+            }
+            auto fi = font->get_faceInfo();
+            fi.set_scale(fi.get_scale() * *ref / *own);
+            font->set_faceInfo(fi);
+            INFO("custom font scale set to {:.3f} to match {}", fi.get_scale(), FontName(reference));
         }
 
         void RefreshTexts() {
