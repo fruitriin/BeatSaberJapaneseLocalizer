@@ -1,7 +1,7 @@
 // 曲一覧のセルの曲名欄を直す。
 // SongCore は曲名欄の高さを 6.5 に縮める。日本語（本体の日本語フォント）と英字（Teko）が同じ行に混ざると
 // 行の高さが 6.55 になり、高さからはみ出したと判定されて「祝福/The Blessing」が「祝…」に省略される。
-// そこで高さを 7 に広げる。未翻訳収集モードのときは、まだ省略されている曲名の寸法をログに出す。
+// そこで、文字を描ける範囲（TMP の余白）だけを上下に広げる。未翻訳収集モードのときは、まだ省略されている曲名の寸法をログに出す。
 #include "Config.hpp"
 #include "Translator.hpp"
 #include "logging.hpp"
@@ -19,18 +19,31 @@
 #include <set>
 
 namespace {
-    constexpr float SongNameHeight = 7.0f;
+    // 曲名欄の大きさは変えず（変えると配置の基準によって文字が上下に動く）、文字を描ける範囲だけを上下に広げる
+    constexpr float VerticalMargin = -0.3f;
     std::set<std::string> logged;
+    bool layoutLogged = false;
 
     void FixHeight(GlobalNamespace::LevelListTableCell* cell) {
         if (!getModConfig().FixSongNameHeight.GetValue()) return;
         auto text = cell->_songNameText;
         if (!text) return;
-        auto rt = text->get_rectTransform();
-        auto size = rt->get_sizeDelta();
-        if (size.y < SongNameHeight) {
-            size.y = SongNameHeight;
-            rt->set_sizeDelta(size);
+        auto margin = text->get_margin();
+        if (margin.y != VerticalMargin || margin.w != VerticalMargin) {
+            margin.y = VerticalMargin;
+            margin.w = VerticalMargin;
+            text->set_margin(margin);
+        }
+        if (!layoutLogged) {
+            layoutLogged = true;
+            auto rt = text->get_rectTransform();
+            auto aMin = rt->get_anchorMin();
+            auto aMax = rt->get_anchorMax();
+            auto pivot = rt->get_pivot();
+            auto pos = rt->get_anchoredPosition();
+            auto size = rt->get_sizeDelta();
+            INFO("song name layout: anchorMin {:.2f},{:.2f} anchorMax {:.2f},{:.2f} pivot {:.2f},{:.2f} anchoredPosition {:.2f},{:.2f} sizeDelta {:.2f},{:.2f} alignment {}",
+                 aMin.x, aMin.y, aMax.x, aMax.y, pivot.x, pivot.y, pos.x, pos.y, size.x, size.y, (int) text->get_alignment());
         }
     }
 
