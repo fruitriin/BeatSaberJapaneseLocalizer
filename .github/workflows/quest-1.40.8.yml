@@ -25,15 +25,23 @@ jobs:
 
       - uses: seanmiddleditch/gha-setup-ninja@v5
 
-      - name: Restore qpm dependencies and NDK
+      # qpm-action はインストールだけに使う。restore / resolve_ndk を任せると、
+      # package_path を指定してもリポジトリの直下で `qpm ndk resolve` が実行され、
+      # 「No package found in current directory」で失敗する。
+      - name: Install qpm
         uses: Fernthedev/qpm-action@v1
         with:
           workflow_token: ${{ secrets.GITHUB_TOKEN }}
-          package_path: ${{ env.package_path }}
-          restore: true
-          resolve_ndk: true
-          cache: true
+          restore: false
+          resolve_ndk: false
+          cache: false
           publish: false
+
+      - name: Restore qpm dependencies and NDK
+        working-directory: ${{ env.package_path }}
+        run: |
+          qpm ndk resolve -d
+          qpm restore
 
       - name: Check dictionaries
         run: |
