@@ -1,0 +1,11 @@
+{
+  "Alpha": "不透明度",
+  "Alwayshave an Rainbow bar": "常に虹色のバーにする",
+  "Fadeout": "フェードアウト",
+  "Fades between the 15% and 95% Color": "15% と 95% の色のあいだで色を変えます",
+  "Make the bar Rainbow when you have full energy": "エネルギーが満タンのとき虹色にする",
+  "Manage settings": "設定を管理",
+  "Use fade between 15% and 95% colors": "15% と 95% の色のあいだで色を変える",
+  "overrides Fadeout": "フェードアウトより優先されます",
+  "overrides Fadeout, Fade red to green and Rainbow": "フェードアウト、赤から緑への変化、虹色より優先されます"
+}

@@ -23,6 +23,26 @@
       "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/BetterSongSearch.json"
     },
     {
+      "name": "ClockMod.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/ClockMod.json"
+    },
+    {
+      "name": "EasyOffsetQuest.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/EasyOffsetQuest.json"
+    },
+    {
+      "name": "HeartBeatQuest.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/HeartBeatQuest.json"
+    },
+    {
+      "name": "HidePacks.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/HidePacks.json"
+    },
+    {
+      "name": "IntroSkip.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/IntroSkip.json"
+    },
+    {
       "name": "RandomSongPicker.json",
       "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/RandomSongPicker.json"
     },
@@ -33,6 +53,22 @@
     {
       "name": "_common.json",
       "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/_common.json"
+    },
+    {
+      "name": "airbuds-search.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/airbuds-search.json"
+    },
+    {
+      "name": "anytext.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/anytext.json"
+    },
+    {
+      "name": "beatsync.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/beatsync.json"
+    },
+    {
+      "name": "bl.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/bl.json"
     },
     {
       "name": "bsl.json",
@@ -47,12 +83,24 @@
       "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/chatplex-sdk-bs.json"
     },
     {
+      "name": "imagecoverexpander.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/imagecoverexpander.json"
+    },
+    {
       "name": "jdfixer.json",
       "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/jdfixer.json"
     },
     {
+      "name": "noodleextensions.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/noodleextensions.json"
+    },
+    {
       "name": "playlistcore.json",
       "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/playlistcore.json"
+    },
+    {
+      "name": "playlistmanager.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/playlistmanager.json"
     },
     {
       "name": "qbeatsaberplus-gametweaker.json",
@@ -71,12 +119,32 @@
       "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/qbeatsaberplus-notetweaker.json"
     },
     {
+      "name": "redbar.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/redbar.json"
+    },
+    {
       "name": "songcore.json",
       "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/songcore.json"
     },
     {
       "name": "songdownloader.json",
       "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/songdownloader.json"
+    },
+    {
+      "name": "songplayhistory.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/songplayhistory.json"
+    },
+    {
+      "name": "spotify-search.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/spotify-search.json"
+    },
+    {
+      "name": "transitions.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/transitions.json"
+    },
+    {
+      "name": "tricksaberlite.json",
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/JapaneseLocalizer/tricksaberlite.json"
     }
   ]
 }

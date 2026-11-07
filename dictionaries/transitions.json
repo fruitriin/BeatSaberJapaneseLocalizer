@@ -1,0 +1,7 @@
+{
+  "Forces all scene transitions to be a specific duration": "すべての画面切り替えを、指定した長さにします",
+  "Override Scene Transitions": "画面切り替えの長さを上書き",
+  "Scene Transitions Length": "画面切り替えの長さ",
+  "The duration to force for all transitions": "すべての画面切り替えに使う長さ",
+  "Transitions": "Transitions"
+}

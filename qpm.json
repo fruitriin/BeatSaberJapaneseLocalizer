@@ -6,7 +6,7 @@
   "info": {
     "name": "Japanese Localizer",
     "id": "JapaneseLocalizer",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "url": null,
     "additionalData": {
       "overrideSoName": "libJapaneseLocalizer.so",
@@ -31,7 +31,7 @@
     { "id": "bsml", "versionRange": "^0.4.55", "additionalData": { "private": true } },
     { "id": "custom-types", "versionRange": "^0.18.3", "additionalData": { "private": true } },
     { "id": "config-utils", "versionRange": "^2.0.3", "additionalData": { "private": true } },
-    { "id": "paper2_scotland2", "versionRange": "~4.7.0", "additionalData": { "private": true } },
+    { "id": "paper2_scotland2", "versionRange": "^4.8.0", "additionalData": { "private": true } },
     { "id": "scotland2", "versionRange": "^0.1.6", "additionalData": { "includeQmod": false, "private": true } },
     { "id": "tinyxml2", "versionRange": "^10.0.0", "additionalData": { "private": true } }
   ]

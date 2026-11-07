@@ -116,6 +116,18 @@ MAKE_HOOK(Lite_CreateDropdown, nullptr, BSML::DropdownListSetting*, TransformWra
     return Lite_CreateDropdown(parent, TranslateStringW(label, CallerModule()), currentValue, values, std::move(onValueChange));
 }
 
+MAKE_HOOK(Lite_CreateClickableText, nullptr, BSML::ClickableText*, TransformWrapper const& parent, StringW text, TMPro::FontStyles fontStyle, float fontSize, Vector2 anchoredPosition, Vector2 sizeDelta, std::function<void()> onClick) {
+    return Lite_CreateClickableText(parent, TranslateStringW(text, CallerModule()), fontStyle, fontSize, anchoredPosition, sizeDelta, std::move(onClick));
+}
+
+MAKE_HOOK(Lite_CreateColorPicker, nullptr, BSML::ColorSetting*, TransformWrapper const& parent, StringW label, UnityEngine::Color defaultColor, std::function<void(UnityEngine::Color)> onDone, std::function<void()> onCancel, std::function<void(UnityEngine::Color)> onChange) {
+    return Lite_CreateColorPicker(parent, TranslateStringW(label, CallerModule()), defaultColor, std::move(onDone), std::move(onCancel), std::move(onChange));
+}
+
+MAKE_HOOK(Lite_CreateColorPickerModal, nullptr, BSML::ModalColorPicker*, TransformWrapper const& parent, StringW name, UnityEngine::Color defaultColor, std::function<void(UnityEngine::Color)> onDone, std::function<void()> onCancel, std::function<void(UnityEngine::Color)> onChange) {
+    return Lite_CreateColorPickerModal(parent, TranslateStringW(name, CallerModule()), defaultColor, std::move(onDone), std::move(onCancel), std::move(onChange));
+}
+
 namespace JapaneseLocalizer {
     void InstallBSMLHooks() {
         static constexpr auto logger = Paper::ConstLoggerContext(MOD_ID "_BSMLHooks");
@@ -140,6 +152,12 @@ namespace JapaneseLocalizer {
             (void*) static_cast<BSML::IncrementSetting* (*)(TransformWrapper const&, StringW, int, float, float, bool, bool, float, float, Vector2, std::function<void(float)>)>(&CreateIncrementSetting));
         INSTALL_HOOK_DIRECT(logger, Lite_CreateStringSetting,
             (void*) static_cast<HMUI::InputFieldView* (*)(TransformWrapper const&, StringW, StringW, Vector2, Vector3, std::function<void(StringW)>)>(&CreateStringSetting));
+        INSTALL_HOOK_DIRECT(logger, Lite_CreateClickableText, 
+            (void*) static_cast<BSML::ClickableText* (*)(TransformWrapper const&, StringW, TMPro::FontStyles, float, Vector2, Vector2, std::function<void()>)>(&CreateClickableText));
+        INSTALL_HOOK_DIRECT(logger, Lite_CreateColorPicker, 
+            (void*) static_cast<BSML::ColorSetting* (*)(TransformWrapper const&, StringW, UnityEngine::Color, std::function<void(UnityEngine::Color)>, std::function<void()>, std::function<void(UnityEngine::Color)>)>(&CreateColorPicker));
+        INSTALL_HOOK_DIRECT(logger, Lite_CreateColorPickerModal, 
+            (void*) static_cast<BSML::ModalColorPicker* (*)(TransformWrapper const&, StringW, UnityEngine::Color, std::function<void(UnityEngine::Color)>, std::function<void()>, std::function<void(UnityEngine::Color)>)>(&CreateColorPickerModal));
         INSTALL_HOOK_DIRECT(logger, Lite_CreateDropdown,
             (void*) static_cast<BSML::DropdownListSetting* (*)(TransformWrapper const&, StringW, StringW, std::span<std::string_view>, std::function<void(StringW)>)>(&CreateDropdown));
     }

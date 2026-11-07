@@ -12,7 +12,21 @@ Quest 版 Beat Saber（1.40.8_7379）で、ほかの Mod の UI を日本語に�
 | BSML-Lite | `CreateText`、`CreateUIButton`、`CreateToggle`、`CreateSliderSetting`、`CreateIncrementSetting`、`CreateStringSetting`、`CreateDropdown`（ラベルだけ）、`AddHoverHint`、`SetButtonText` | 表示する文字列 |
 | ChatPlex SDK（BeatSaberPlus） | `CText::SetText`、`CPOrSButton::SetText` / `SetTooltip`、`CTextInput::SetPlaceHolder`、`TopNavigationView::SetTitle`、`CTextSegmentedControl::SetTexts` | 表示する文字列。`CDropdown::SetOptions` は値も変わるので訳さない |
 
+BSML-Lite では、ほかに `CreateClickableText`、`CreateColorPicker`、`CreateColorPickerModal` もフックする。
+
 どの Mod の文字列かは、スタックをたどって .so 名から決める（`libsongdownloader.so` → `songdownloader`）。
+
+### 訳せない文字
+
+Mod がコードから TMP に直接書き込む文字（`text->set_text(...)`）と、AssetBundle に入っている UI の文字は訳せない。たとえば次のものである。
+
+- SongDownloader の「Please type in a Username!」
+- BeatLeader のリーダーボード、スコアの詳細、ニュース、イベントのパネル。設定画面とモーダルの一部（BSML-Lite と .bsml で作る部分）は訳せる
+- HeartBeatQuest の AssetBundle の UI（BSML-Lite で作る設定画面は訳せる）
+
+### AnyText との関係
+
+AnyText は、文字を描画する段階（`TMP_Text::ParseInputText`）で `Configs/anytext.json` の規則に従って文字を置き換える。この Mod は部品を作る段階で訳すので、フックする関数は重ならない。AnyText は、この Mod が訳したあとの文字を受け取る。英語の原文に合わせて書いた AnyText の規則は、この Mod が訳した文字には当たらなくなる。
 
 ## 辞書
 

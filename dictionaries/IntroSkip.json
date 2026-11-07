@@ -1,0 +1,18 @@
+{
+  "Enable Intro Skipping": "曲の始めを飛ばす",
+  "Enable Middle Skipping": "曲の途中を飛ばす",
+  "Enable Mod": "Mod を有効にする",
+  "Enable Outro Skipping": "曲の終わりを飛ばす",
+  "Enable the Intro Skip Mod": "Intro Skip を有効にします",
+  "Enable the ability to skip the beginning of songs": "曲の始めを飛ばせるようにします",
+  "Enable the ability to skip the ending of songs": "曲の終わりを飛ばせるようにします",
+  "Enable the ability to skip the middle sections of songs": "曲の途中のノーツが無い区間を飛ばせるようにします",
+  "How long you you are required to press the triggers for before it skips": "飛ばすまでにトリガーを押し続ける時間",
+  "Intro Skip": "Intro Skip",
+  "Minimum Hold Time": "長押しの時間",
+  "Minimum Skip Time": "飛ばせる最短の時間",
+  "Minimum amount of downtime required to be able to skip that section of the song": "ノーツが無い区間がこの長さ以上のときだけ飛ばせます",
+  "Press Triggers to Skip": "トリガーで飛ばす",
+  "Require Both Triggers": "両手のトリガーが必要",
+  "Require both triggers be pressed in order to skip. WHen disabled either trigger will skip": "両手のトリガーを押したときだけ飛ばします。オフにすると、片方のトリガーで飛ばします"
+}

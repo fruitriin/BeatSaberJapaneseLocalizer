@@ -1,0 +1,19 @@
+{
+  "Add and edit playlist": "プレイリストの追加と編集",
+  "Add playlist": "プレイリストを追加",
+  "Add song to playlist": "曲をプレイリストに追加",
+  "Cancel addition": "追加をやめる",
+  "Clear highlighted difficulties": "強調表示した難易度を解除",
+  "Create new playlist": "プレイリストを新しく作る",
+  "Delete playlist": "プレイリストを削除",
+  "Download missing songs": "足りない曲をダウンロード",
+  "Downloading Songs...": "曲をダウンロード中...",
+  "Manage Playlists": "プレイリストの管理",
+  "New Playlist": "新しいプレイリスト",
+  "No description": "説明なし",
+  "Open the PlaylistManager menu": "PlaylistManager のメニューを開きます",
+  "Playlist Manager": "Playlist Manager",
+  "Remove sync url": "同期の URL を外す",
+  "Remove undownloaded songs": "未ダウンロードの曲を外す",
+  "Sync playlist": "プレイリストを同期"
+}

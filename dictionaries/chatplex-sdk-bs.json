@@ -13,7 +13,9 @@
   "Disconected, error!": "エラーで切断しました",
   "Donate - Patreon": "寄付（Patreon）",
   "Enable": "有効にする",
+  "Event specials (Require game restart)": "イベントの特別演出（ゲームの再起動が必要）",
   "Feedback": "フィードバック",
+  "Internal ChatPlex service error": "ChatPlex のサービスで内部エラーが発生しました",
   "Invalid image": "画像が正しくありません",
   "Lawless": "Lawless",
   "Lightshow": "ライトショー",
@@ -33,6 +35,7 @@
   "Standard": "スタンダード",
   "Testplay": "テストプレイ",
   "Unknow server error!": "サーバーで不明なエラーが発生しました",
+  "Unknown server error!": "サーバーで不明なエラーが発生しました",
   "Uploaded": "アップロード済み",
   "any time by clicking the <b>Settings</b> button below": "下の<b>設定</b>ボタンから、いつでも変更できます"
 }
