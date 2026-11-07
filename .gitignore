@@ -8,3 +8,4 @@ mod.json
 ndkpath.txt
 .cache/
 __pycache__/
+.DS_Store

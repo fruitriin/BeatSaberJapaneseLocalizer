@@ -2,7 +2,7 @@
   "_QPVersion": "0.1.2",
   "name": "${mod_name}",
   "id": "${mod_id}",
-  "author": "riin",
+  "author": "fruitriin",
   "version": "${version}",
   "packageId": "com.beatgames.beatsaber",
   "packageVersion": "1.40.8_7379",
